@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_28_085412) do
+ActiveRecord::Schema.define(version: 2020_09_28_122346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bills", force: :cascade do |t|
+    t.string "ref_bill"
+    t.bigint "quote_id", null: false
+    t.bigint "customer_id", null: false
+    t.text "description"
+    t.integer "deposit"
+    t.integer "price_duty_free"
+    t.integer "price_all_taxes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_bills_on_customer_id"
+    t.index ["quote_id"], name: "index_bills_on_quote_id"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -45,6 +59,18 @@ ActiveRecord::Schema.define(version: 2020_09_28_085412) do
     t.index ["company_id"], name: "index_customers_on_company_id"
   end
 
+  create_table "quotes", force: :cascade do |t|
+    t.string "ref_quote"
+    t.bigint "customer_id", null: false
+    t.text "description"
+    t.integer "deposit"
+    t.integer "price_duty_free"
+    t.integer "price_all_taxes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_quotes_on_customer_id"
+  end
+
   create_table "user_companies", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "company_id", null: false
@@ -69,7 +95,10 @@ ActiveRecord::Schema.define(version: 2020_09_28_085412) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bills", "customers"
+  add_foreign_key "bills", "quotes"
   add_foreign_key "customers", "companies"
+  add_foreign_key "quotes", "customers"
   add_foreign_key "user_companies", "companies"
   add_foreign_key "user_companies", "users"
 end
