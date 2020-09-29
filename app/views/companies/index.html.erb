@@ -1,0 +1,7 @@
+<div class="row d-flex justify-content-center">
+  <% @companies.each do |company| %>
+    <%= link_to company_path(company) do %>
+      <%= company.name %>
+    <% end %>
+  <% end %>
+</div>
