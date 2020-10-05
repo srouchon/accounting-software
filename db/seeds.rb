@@ -1,4 +1,5 @@
 puts 'Clean DB'
+UserCompany.destroy_all
 User.destroy_all
 Company.destroy_all
 Customer.destroy_all
