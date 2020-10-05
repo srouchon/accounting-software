@@ -1,0 +1,13 @@
+<div>
+  <%= simple_form_for(@company) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :postcode %>
+    <%= f.input :city %>
+    <%= f.input :phone %>
+    <%= f.input :email %>
+    <%= f.input :siret %>
+    <%= f.submit %>
+    <%= link_to '< Back', company_path(@company), class: 'btn btn-primary' %>
+  <% end %>
+</div>

@@ -1,10 +1,11 @@
 class CompaniesController < ApplicationController
+  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  
   def index
     @companies = policy_scope(Company).sort
   end
   
   def show
-    @company = Company.find(params[:id])
     authorize @company
   end
   
@@ -21,19 +22,33 @@ class CompaniesController < ApplicationController
     else
       render :new
     end
-    
   end
+  
   def edit
-    
+    authorize @company
   end
+  
   def update
-    
+    @company.update(company_params)
+    authorize @company
+    if @company.save
+      redirect_to company_path(@company)
+    else
+      render :edit
+    end
   end
+  
   def destroy
-    
+    @company.destroy
+    authorize @company
+    redirect_to companies_path
   end
   
   private
+  
+  def set_company
+    @company = Company.find(params[:id])
+  end
   
   def company_params
     params.require(:company).permit(:name, :address, :postcode, :city, :phone, :email, :siret)
