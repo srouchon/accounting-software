@@ -1,0 +1,11 @@
+<div>
+  <%= simple_form_for([@company, @customer, @bill]) do |f| %>
+    <%= f.input :ref_bill %>
+    <%= f.input :description %>
+    <%= f.input :deposit %>
+    <%= f.input :price_duty_free %>
+    <%= f.input :price_all_taxes %>
+    <%= f.submit %>
+    <%= link_to '< Back', company_customers_path(@company), class: 'btn btn-primary' %>
+  <% end %>
+</div>

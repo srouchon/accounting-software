@@ -12,6 +12,7 @@ class BillsController < ApplicationController
   end
   
   def new
+    @quotes = @customer.quotes
     @bill = Bill.new
     authorize @bill
   end
