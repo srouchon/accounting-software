@@ -9,6 +9,30 @@
   <h4><%= @customer.siren %></h4>
   <h4><%= @customer.siret %></h4>
 </div>
+
+<div class="quote">
+  <h2>Quotes</h2>
+  <%= link_to 'See all quotes', company_customer_quotes_path(@company, @customer) %>
+  <table border="1">
+    <tr>
+      <th>Ref_Quote</th>
+      <th>Description</th>
+      <th>Price w/o taxes</th>
+      <th>Price w/ taxes</th>
+      <th>Options</th>
+    </tr>
+    <tr>
+      <% @quotes.each do |quote| %>
+        <td><%= quote.ref_quote %></td>
+        <td><%= quote.description %></td>
+        <td><%= quote.price_duty_free %></td>
+        <td><%= quote.price_all_taxes %></td>
+        <td>
+        </td>
+      <% end %>
+    </tr>
+  </table>
+</div>
 <div>
   <%= link_to 'Edit', edit_company_customer_path(@company, @customer), class: 'btn btn-warning' %>
   <%= link_to 'Remove', company_customer_path(@company, @customer), method: :delete, class: 'btn btn-danger' %>

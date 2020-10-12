@@ -7,6 +7,7 @@ class CustomersController < ApplicationController
   end
   
   def show
+    @quotes = @customer.quotes.first(5)
     authorize @customer
   end
   
