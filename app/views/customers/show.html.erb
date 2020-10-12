@@ -11,30 +11,36 @@
 </div>
 
 <div class="quote">
-  <h2>Quotes</h2>
+  <h2>Quotes (5 lasts)</h2>
   <%= link_to 'See all quotes', company_customer_quotes_path(@company, @customer) %>
   <table border="1">
-    <tr>
-      <th>Ref_Quote</th>
-      <th>Description</th>
-      <th>Price w/o taxes</th>
-      <th>Price w/ taxes</th>
-      <th>Options</th>
-    </tr>
-    <tr>
+    <thead>
+      <tr>
+        <th>Ref_Quote</th>
+        <th>Description</th>
+        <th>Deposit</th>
+        <th>Price w/o taxes</th>
+        <th>Price w/ taxes</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
       <% @quotes.each do |quote| %>
-        <td><%= quote.ref_quote %></td>
-        <td><%= quote.description %></td>
-        <td><%= quote.price_duty_free %></td>
-        <td><%= quote.price_all_taxes %></td>
-        <td>
-        </td>
-      <% end %>
-    </tr>
+        <tr>
+          <td>          
+            <%= link_to company_customer_quote_path(@company, @customer, quote) do %>
+              <%= quote.ref_quote %></td>
+            <% end %>
+          <td><%= quote.description %></td>
+          <td><%= quote.deposit %></td>
+          <td><%= quote.price_duty_free %></td>
+          <td><%= quote.price_all_taxes %></td>
+          <td></td>
+        </tr>
+        <% end %>
+    </tbody>
   </table>
 </div>
 <div>
-  <%= link_to 'Edit', edit_company_customer_path(@company, @customer), class: 'btn btn-warning' %>
-  <%= link_to 'Remove', company_customer_path(@company, @customer), method: :delete, class: 'btn btn-danger' %>
-  <%= link_to '< Back', company_customers_path(@company), class: 'btn btn-primary' %>
+  <%= link_to '< Back', company_customer_path(@company, @customer), class: 'btn btn-primary' %>
 </div>

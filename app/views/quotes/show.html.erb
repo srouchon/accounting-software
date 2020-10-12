@@ -1,0 +1,13 @@
+<div>
+  <h1><%= @customer.name %></h1>
+  <h2>Quote - <%= @quote.ref_quote %></h2>
+  <h4><%= @quote.description %></h4>
+  <h4><%= @quote.deposit %></h4>
+  <h4><%= @quote.price_duty_free %></h4>
+  <h4><%= @quote.price_all_taxes %></h4>
+</div>
+<div>
+  <%= link_to 'Edit', edit_company_customer_quote_path(@company, @customer, @quote), class: 'btn btn-warning' %>
+  <%= link_to 'Remove', company_customer_quote_path(@company, @customer, @quote), method: :delete, class: 'btn btn-danger' %>
+  <%= link_to '< Back', company_customer_quotes_path(@company, @customer), class: 'btn btn-primary' %>
+</div>

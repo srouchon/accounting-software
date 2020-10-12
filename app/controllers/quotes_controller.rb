@@ -17,7 +17,14 @@ class QuotesController < ApplicationController
   end
   
   def create
-    
+    @quote = Quote.new(quote_params)
+    @quote.customer = @customer
+    authorize @quote
+    if @quote.save
+      redirect_to company_customer_quote_path(@company, @customer, @quote)
+    else
+      render :new
+    end
   end
   
   def edit
@@ -47,6 +54,6 @@ class QuotesController < ApplicationController
   end
   
   def quote_params
-    params.require(:quote).permit()
+    params.require(:quote).permit(:description, :ref_quote, :deposit, :price_duty_free, :price_all_taxes)
   end
 end
