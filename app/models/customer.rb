@@ -6,7 +6,4 @@ class Customer < ApplicationRecord
   validates :city, presence: true
   validates :phone_1, presence: true
   validates :email_1, presence: true
-  validates :phone_2, presence: true
-  validates :email_2, presence: true
-  validates :siret, presence: true
 end

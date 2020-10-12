@@ -1,6 +1,7 @@
 <div>
   <%= simple_form_for([@company, @customer]) do |f| %>
     <%= f.input :name %>
+    <%= f.input :ref_client %>
     <%= f.input :address %>
     <%= f.input :postcode %>
     <%= f.input :city %>
