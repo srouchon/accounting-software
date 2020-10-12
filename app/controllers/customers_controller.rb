@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, only: [:index, :show, :new, :create, :edit, :update]
+  before_action :set_company, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   
   def index
     @customers = policy_scope(Customer).sort
@@ -41,7 +41,9 @@ class CustomersController < ApplicationController
   end
   
   def destroy
-    
+    @customer.destroy
+    authorize @customer
+    redirect_to company_customers_path(@company)
   end
   
   private
