@@ -12,7 +12,8 @@ class QuotesController < ApplicationController
   end
   
   def new
-    
+    @quote = Quote.new
+    authorize @quote
   end
   
   def create
