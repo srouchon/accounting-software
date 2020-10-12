@@ -8,6 +8,6 @@
 </div>
 <div>
   <%= link_to 'Edit', edit_company_customer_quote_path(@company, @customer, @quote), class: 'btn btn-warning' %>
-  <%= link_to 'Remove', company_customer_quote_path(@company, @customer, @quote), method: :delete, class: 'btn btn-danger' %>
+  <%= link_to 'Remove', company_customer_quote_path(@company, @customer, @quote), method: :delete, class: 'btn btn-danger', data: { confirm: "Delete?" } %>
   <%= link_to '< Back', company_customer_quotes_path(@company, @customer), class: 'btn btn-primary' %>
 </div>

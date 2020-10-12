@@ -1,7 +1,7 @@
 class QuotesController < ApplicationController
   before_action :set_customer, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :set_company, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  before_action :set_quote, only: [:show]
+  before_action :set_quote, only: [:show, :destroy]
 
   def index
     @quotes = policy_scope(Quote)
@@ -36,7 +36,9 @@ class QuotesController < ApplicationController
   end
   
   def destroy
-    
+    @quote.destroy
+    authorize @quote
+    redirect_to company_customer_quotes_path(@company, @customer)
   end
   
   private

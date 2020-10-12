@@ -20,8 +20,6 @@
         <th>Description</th>
         <th>Deposit</th>
         <th>Price w/o taxes</th>
-        <th>Price w/ taxes</th>
-        <th>Options</th>
       </tr>
     </thead>
     <tbody>
@@ -34,8 +32,6 @@
           <td><%= quote.description %></td>
           <td><%= quote.deposit %></td>
           <td><%= quote.price_duty_free %></td>
-          <td><%= quote.price_all_taxes %></td>
-          <td></td>
         </tr>
         <% end %>
     </tbody>
@@ -43,4 +39,3 @@
 </div>
 <div>
   <%= link_to '< Back', company_customer_path(@company, @customer), class: 'btn btn-primary' %>
-</div>
