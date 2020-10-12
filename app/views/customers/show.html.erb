@@ -37,5 +37,33 @@
     </tbody>
   </table>
 </div>
+
+<div class="bill">
+  <h2>Bills (5 lasts)</h2>
+  <%= link_to 'See all bills', company_customer_bills_path(@company, @customer) %>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Ref_Bill</th>
+        <th>Description</th>
+        <th>Deposit</th>
+        <th>Price w/o taxes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bills.each do |bill| %>
+        <tr>
+          <td>          
+            <%= link_to company_customer_bill_path(@company, @customer, bill) do %>
+              <%= bill.ref_bill %></td>
+            <% end %>
+          <td><%= bill.description %></td>
+          <td><%= bill.deposit %></td>
+          <td><%= bill.price_duty_free %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
 <div>
   <%= link_to '< Back', company_customer_path(@company, @customer), class: 'btn btn-primary' %>
