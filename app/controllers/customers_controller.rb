@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, only: [:index, :show, :new, :create]
+  before_action :set_company, only: [:index, :show, :new, :create, :edit, :update]
   
   def index
     @customers = policy_scope(Customer).sort
@@ -27,11 +27,17 @@ class CustomersController < ApplicationController
   end
   
   def edit
-    
+    authorize @customer
   end
   
   def update
-    
+    @customer.update(customer_params)
+    authorize @customer
+    if @customer.save
+      redirect_to company_customer_path(@company, @customer)
+    else
+      render :edit
+    end
   end
   
   def destroy
