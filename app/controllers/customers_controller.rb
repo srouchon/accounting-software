@@ -7,7 +7,8 @@ class CustomersController < ApplicationController
   end
   
   def show
-    
+    @company = Company.find(params[:company_id])
+    authorize @customer
   end
   
   def new

@@ -1,0 +1,16 @@
+<div>
+  <h1><%= @customer.name %> - <%= @customer.ref_client %></h1>
+  <h4><%= @customer.address %></h4>
+  <h4><%= @customer.postcode %> <%= @customer.city %></h4>
+  <h4><%= @customer.phone_1 %></h4>
+  <h4><%= @customer.phone_2 %></h4>
+  <h4><%= @customer.email_1 %></h4>
+  <h4><%= @customer.email_2 %></h4>
+  <h4><%= @customer.siren %></h4>
+  <h4><%= @customer.siret %></h4>
+</div>
+<div>
+  <%= link_to 'Edit', edit_company_path(@company), class: 'btn btn-warning' %>
+  <%= link_to 'Remove', company_path(@company), method: :delete, class: 'btn btn-danger' %>
+  <%= link_to '< Back', company_customers_path(@company), class: 'btn btn-primary' %>
+</div>
