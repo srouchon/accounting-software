@@ -1,13 +1,14 @@
 class QuotesController < ApplicationController
-  before_action :set_customer, only: [:index, :show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :set_company, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :set_quote, only: [:show]
 
   def index
     @quotes = policy_scope(Quote)
   end
   
   def show
-    
+    authorize @quote
   end
   
   def new
@@ -31,6 +32,10 @@ class QuotesController < ApplicationController
   end
   
   private
+  
+  def set_quote
+    @quote = Quote.find(params[:id])
+  end
   
   def set_customer
     @customer = Customer.find(params[:customer_id])
