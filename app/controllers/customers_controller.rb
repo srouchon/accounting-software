@@ -2,7 +2,8 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   def index
-    
+    @company = Company.find(params[:company_id])
+    @customers = policy_scope(Customer).sort
   end
   
   def show
@@ -32,7 +33,7 @@ class CustomersController < ApplicationController
   private
   
   def set_customer
-    @customer = customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
   
   def customer_params

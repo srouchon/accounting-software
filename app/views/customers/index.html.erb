@@ -1,0 +1,10 @@
+<div>
+  <% @customers.each do |customer| %>
+    <%= link_to company_customer_path(@company, customer) do %>
+      <%= customer.name %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <%= link_to 'Add a new customer', new_company_customer_path(@company), class: 'btn btn-primary' %>
+</div>
