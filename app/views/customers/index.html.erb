@@ -1,7 +1,7 @@
 <div>
   <% @customers.each do |customer| %>
     <%= link_to company_customer_path(@company, customer) do %>
-      <%= customer.name %>
+      <%= customer.name %> - <%= customer.ref_client %>
     <% end %>
   <% end %>
 </div>
