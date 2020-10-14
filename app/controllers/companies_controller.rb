@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
   
   def index
-    @companies = policy_scope(Company).sort
+    @companies = policy_scope(Company)
   end
   
   def show
