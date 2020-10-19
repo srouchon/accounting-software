@@ -2,7 +2,7 @@ class ServicesController < ApplicationController
   before_action :set_company, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   
   def index
-
+    @services = policy_scope(Service)
   end
   
   def show
