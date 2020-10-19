@@ -2,9 +2,25 @@
   <h1><%= @customer.name %></h1>
   <h2>Quote - <%= @quote.ref_quote %></h2>
   <h4><%= @quote.description %></h4>
-  <h4><%= @quote.deposit %></h4>
-  <h4><%= @quote.price_duty_free %></h4>
-  <h4><%= @quote.price_all_taxes %></h4>
+  <%= link_to 'Add a new service', new_company_customer_quote_service_path(@company, @customer, @quote), class: 'btn btn-primary' %>
+  <table>
+    <thead>
+      <th>Ref_service</th>
+      <th>Description</th>
+      <th>Unit Price</th>
+      <th>Quantity</th>
+      <th>Total Price Service</th>
+    </thead>
+    <tbody>
+      <% if @quote.services.exists? %>
+        <td><%= f.input :ref_service %></td>
+        <td><%= f.input :description_service %></td>
+        <td><%= f.input :unit_price %></td>
+        <td><%= f.input :quantity %></td>
+        <td><%= f.input :total_price_service %></td>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 <div>
   <%= link_to 'Edit', edit_company_customer_quote_path(@company, @customer, @quote), class: 'btn btn-warning' %>
