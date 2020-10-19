@@ -1,10 +1,8 @@
 class ServicesController < ApplicationController
-  before_action :set_customer, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :set_company, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  before_action :set_quote, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   
   def index
-    
+
   end
   
   def show
@@ -33,16 +31,8 @@ class ServicesController < ApplicationController
   
   private
   
-  def set_customer
-    @customer = Customer.find(params[:customer_id])
-  end
-  
   def set_company
     @company = Company.find(params[:company_id])
-  end
-  
-  def set_quote
-    @company = Company.find(params[:quote_id])
   end
   
   def service_params
