@@ -13,11 +13,13 @@
     </thead>
     <tbody>
       <% if @quote.services.exists? %>
-        <td><%= f.input :ref_service %></td>
-        <td><%= f.input :description_service %></td>
-        <td><%= f.input :unit_price %></td>
-        <td><%= f.input :quantity %></td>
-        <td><%= f.input :total_price_service %></td>
+        <% @quote.services.each do |service| %>
+        <tr>
+          <td><%= service.ref_service %></td>
+          <td><%= service.description_service %></td>
+          <td><%= service.unit_price %></td>
+        </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

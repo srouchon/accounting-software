@@ -1,0 +1,11 @@
+<div>
+  <%= simple_form_for([@company, @customer, @quote, @service]) do |f| %>
+    <%= f.input :ref_service %>
+    <%= f.input :description_service %>
+    <%= f.input :unit_price %>
+    <%= f.input :quantity, input_html: { value: @quoteservice.quantity } %>
+    <%= f.input :total_price_service, input_html: { value: @quoteservice.total_price_service } %>
+    <%= f.submit %>
+    <%= link_to '< Back', company_customers_path(@company), class: 'btn btn-primary' %>
+  <% end %>
+</div>
