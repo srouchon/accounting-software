@@ -38,7 +38,7 @@ class ServicesController < ApplicationController
   end
   
   def set_quote
-    @quote = quote.find(params[:quote_id])
+    @quote = Quote.find(params[:quote_id])
   end
   
   def service_params
