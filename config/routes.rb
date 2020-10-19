@@ -7,5 +7,6 @@ Rails.application.routes.draw do
       resources :quotes
       resources :bills
     end
+    resources :services
   end
 end
