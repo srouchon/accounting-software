@@ -1,16 +1,16 @@
 <div class="bill">
   <h2>Bills</h2>
   <div>
-    <%= link_to 'Add a new bill', new_company_customer_bill_path(@company, @customer), class: 'btn btn-primary' %>
+    <%= link_to 'Créer une facture', new_company_customer_bill_path(@company, @customer), class: 'btn btn-primary' %>
   </div>
   <table border="1">
     <thead>
       <tr>
-        <th>Ref_bill</th>
+        <th>Ref_facture</th>
         <th>Description</th>
-        <th>Deposit</th>
-        <th>Price w/o taxes</th>
-        <th>Price w/ taxes</th>
+        <th>Accompte</th>
+        <th>Prix HT</th>
+        <th>Prix TTC</th>
         <th>Options</th>
       </tr>
     </thead>
@@ -26,8 +26,8 @@
           <td><%= bill.price_duty_free %></td>
           <td><%= bill.price_all_taxes %></td>
           <td>
-            <%= link_to 'edit', edit_company_customer_bill_path(@company, @customer, bill), class: 'btn btn-warning' %>
-            <%= link_to 'remove', company_customer_bill_path(@company, @customer, bill), method: :delete, class: 'btn btn-danger', data: { confirm: "Delete?" } %>
+            <%= link_to 'modifier', edit_company_customer_bill_path(@company, @customer, bill), class: 'btn btn-warning' %>
+            <%= link_to 'supprimer', company_customer_bill_path(@company, @customer, bill), method: :delete, class: 'btn btn-danger', data: { confirm: "Delete?" } %>
           </td>
         </tr>
         <% end %>
@@ -35,5 +35,5 @@
   </table>
 </div>
 <div>
-  <%= link_to '< Back', company_customer_path(@company, @customer), class: 'btn btn-primary' %>
+  <%= link_to '< Retour', company_customer_path(@company, @customer), class: 'btn btn-primary' %>
 </div>

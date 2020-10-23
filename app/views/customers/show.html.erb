@@ -8,19 +8,19 @@
   <h4><%= @customer.email_2 %></h4>
   <h4><%= @customer.siren %></h4>
   <h4><%= @customer.siret %></h4>
-  <%= link_to 'Edit client\'s information', edit_company_customer_path(@company, @customer), class: 'btn btn-warning' %>
+  <%= link_to 'Modifier les informations générales', edit_company_customer_path(@company, @customer), class: 'btn btn-warning' %>
 </div>
 
 <div class="quote">
-  <h2>Quotes (5 lasts)</h2>
-  <%= link_to 'See all quotes', company_customer_quotes_path(@company, @customer) %>
+  <h2>Devis (5 derniers)</h2>
+  <%= link_to 'Voir tous les devis', company_customer_quotes_path(@company, @customer) %>
   <table border="1">
     <thead>
       <tr>
-        <th>Ref_Quote</th>
+        <th>Ref_Devis</th>
         <th>Description</th>
-        <th>Deposit</th>
-        <th>Price w/o taxes</th>
+        <th>Accompte</th>
+        <th>Prix HT</th>
       </tr>
     </thead>
     <tbody>
@@ -40,15 +40,15 @@
 </div>
 
 <div class="bill">
-  <h2>Bills (5 lasts)</h2>
-  <%= link_to 'See all bills', company_customer_bills_path(@company, @customer) %>
+  <h2>Factures (5 dernières)</h2>
+  <%= link_to 'Voir toutes les factures', company_customer_bills_path(@company, @customer) %>
   <table border="1">
     <thead>
       <tr>
-        <th>Ref_Bill</th>
+        <th>Ref_Facture</th>
         <th>Description</th>
-        <th>Deposit</th>
-        <th>Price w/o taxes</th>
+        <th>Accompte</th>
+        <th>Prix HT</th>
       </tr>
     </thead>
     <tbody>
@@ -67,5 +67,5 @@
   </table>
 </div>
 <div>
-  <%= link_to '< Back', company_customers_path(@company), class: 'btn btn-primary' %>
+  <%= link_to '< Retour', company_customers_path(@company), class: 'btn btn-primary' %>
 </div>

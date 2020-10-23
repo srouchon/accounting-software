@@ -1,12 +1,12 @@
 <div>
   <h1><%= @company.name %></h1>
-  <h3>Dashboard</h3>
+  <h3>Tableau de bord</h3>
 </div>
 <div>
-  <%= link_to 'See all customers', company_customers_path(@company), class: 'btn btn-info' %>
+  <%= link_to 'Voir tous les clients', company_customers_path(@company), class: 'btn btn-info' %>
 </div>
 <div>
-  <%= link_to 'Edit', edit_company_path(@company), class: 'btn btn-warning' %>
-  <%= link_to 'Remove', company_path(@company), method: :delete, class: 'btn btn-danger', data: { confirm: "Delete?" } %>
-  <%= link_to '< Back', companies_path, class: 'btn btn-primary' %>
+  <%= link_to 'Modifier', edit_company_path(@company), class: 'btn btn-warning' %>
+  <%= link_to 'Supprimer', company_path(@company), method: :delete, class: 'btn btn-danger', data: { confirm: "Delete?" } %>
+  <%= link_to '< Retour', companies_path, class: 'btn btn-primary' %>
 </div>

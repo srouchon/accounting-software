@@ -1,13 +1,13 @@
 <div>
   <h1><%= @customer.name %></h1>
-  <h2>Bill - <%= @bill.ref_bill %></h2>
+  <h2>Facture - <%= @bill.ref_bill %></h2>
   <h4><%= @bill.description %></h4>
   <h4><%= @bill.deposit %></h4>
   <h4><%= @bill.price_duty_free %></h4>
   <h4><%= @bill.price_all_taxes %></h4>
 </div>
 <div>
-  <%= link_to 'Edit', edit_company_customer_bill_path(@company, @customer, @bill), class: 'btn btn-warning' %>
-  <%= link_to 'Remove', company_customer_bill_path(@company, @customer, @bill), method: :delete, class: 'btn btn-danger', data: { confirm: "Delete?" } %>
-  <%= link_to '< Back', company_customer_bills_path(@company, @customer), class: 'btn btn-primary' %>
+  <%= link_to 'Modifier', edit_company_customer_bill_path(@company, @customer, @bill), class: 'btn btn-warning' %>
+  <%= link_to 'Supprimer', company_customer_bill_path(@company, @customer, @bill), method: :delete, class: 'btn btn-danger', data: { confirm: "Delete?" } %>
+  <%= link_to '< Retour', company_customer_bills_path(@company, @customer), class: 'btn btn-primary' %>
 </div>
