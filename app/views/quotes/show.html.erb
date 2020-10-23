@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <% if @quote.services.exists? %>
-        <% @quote.services.each do |service| %>
+      <% @quote.services.each do |service| %>
         <tr>
           <td><%= service.ref_service %></td>
           <td><%= service.description_service %></td>
@@ -29,3 +29,7 @@
   <%= link_to 'Remove', company_customer_quote_path(@company, @customer, @quote), method: :delete, class: 'btn btn-danger', data: { confirm: "Delete?" } %>
   <%= link_to '< Back', company_customer_quotes_path(@company, @customer), class: 'btn btn-primary' %>
 </div>
+
+
+
+<!-- QuoteService.where(:quote_id == @quote.id) ## pour selectionner les quoteservices d'un quote précis -->
