@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_065633) do
+ActiveRecord::Schema.define(version: 2020_10_28_150810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,8 @@ ActiveRecord::Schema.define(version: 2020_10_19_065633) do
     t.integer "unit_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_services_on_company_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -110,4 +112,5 @@ ActiveRecord::Schema.define(version: 2020_10_19_065633) do
   add_foreign_key "quote_services", "quotes"
   add_foreign_key "quote_services", "services"
   add_foreign_key "quotes", "customers"
+  add_foreign_key "services", "companies"
 end
