@@ -1,5 +1,6 @@
 class ServicesController < ApplicationController
   before_action :set_company, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :set_service, only: [:edit, :update, :destroy]
 
   def index
     @services = policy_scope(Service)
@@ -24,12 +25,23 @@ class ServicesController < ApplicationController
   end
 
   def edit
+    authorize @service
   end
 
-  def updates
+  def update
+    @service.update(service_params)
+    authorize @service
+    if @service.save
+      redirect_to company_services_path(@company)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @service.destroy
+    authorize @service
+    redirect_to company_services_path(@company)
   end
 
   private
@@ -38,8 +50,12 @@ class ServicesController < ApplicationController
     @company = Company.find(params[:company_id])
   end
 
+  def set_service
+    @service = Service.find(params[:id])
+  end
+
   def service_params
-    params.require(:service).permit(:description_service, :ref_service, :unit_price, :quantity, :total_price_service)
+    params.require(:service).permit(:description_service, :ref_service, :unit_price)
   end
 
 end
