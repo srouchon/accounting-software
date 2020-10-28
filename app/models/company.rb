@@ -1,7 +1,8 @@
 class Company < ApplicationRecord
   belongs_to :user
   has_many :customers, dependent: :destroy
-  
+  has_many :services
+
   validates :name, presence: true
   validates :address, presence: true
   validates :postcode, presence: true

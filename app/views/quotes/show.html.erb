@@ -2,7 +2,7 @@
   <h1><%= @customer.name %></h1>
   <h2>Devis - <%= @quote.ref_quote %></h2>
   <h4><%= @quote.description %></h4>
-  <%= link_to 'Ajouter une prestation', new_company_customer_quote_service_path(@company, @customer, @quote), class: 'btn btn-primary' %>
+  <!-- <%= link_to 'Ajouter une prestation', new_company_customer_quote_path(@company, @customer, @quote), class: 'btn btn-primary' %> -->
   <table>
     <thead>
       <th>Ref_Prestation</th>
@@ -13,12 +13,12 @@
     </thead>
     <tbody>
       <% if @quote.services.exists? %>
-      <% @quote.services.each do |service| %>
-        <tr>
-          <td><%= service.ref_service %></td>
-          <td><%= service.description_service %></td>
-          <td><%= service.unit_price %></td>
-        </tr>
+        <% @quote.services.each do |service| %>
+          <tr>
+            <td><%= service.ref_service %></td>
+            <td><%= service.description_service %></td>
+            <td><%= service.unit_price %></td>
+          </tr>
         <% end %>
       <% end %>
     </tbody>

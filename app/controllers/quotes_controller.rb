@@ -6,16 +6,16 @@ class QuotesController < ApplicationController
   def index
     @quotes = policy_scope(Quote)
   end
-  
+
   def show
     authorize @quote
   end
-  
+
   def new
     @quote = Quote.new
     authorize @quote
   end
-  
+
   def create
     @quote = Quote.new(quote_params)
     @quote.customer = @customer
@@ -26,11 +26,11 @@ class QuotesController < ApplicationController
       render :new
     end
   end
-  
+
   def edit
     authorize @quote
   end
-  
+
   def update
     @quote.update(quote_params)
     authorize @quote
@@ -40,28 +40,28 @@ class QuotesController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @quote.destroy
     authorize @quote
     redirect_to company_customer_quotes_path(@company, @customer)
   end
-  
+
   private
-  
+
   def set_quote
     @quote = Quote.find(params[:id])
   end
-  
+
   def set_customer
     @customer = Customer.find(params[:customer_id])
   end
-  
+
   def set_company
     @company = Company.find(params[:company_id])
   end
-  
+
   def quote_params
-    params.require(:quote).permit(:description, :ref_quote, :deposit, :price_duty_free, :price_all_taxes)
+    params.require(:quote).permit(:description, :ref_quote, :deposit, :services)
   end
 end
