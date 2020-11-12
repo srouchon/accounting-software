@@ -17,8 +17,6 @@ class QuotesController < ApplicationController
     @quote.quote_services.new
     authorize @quote
   end
-
-  # params[:quote][:services_attributes]['0'][:ref_service]
   
   def create
     @quote = Quote.new(
