@@ -9,16 +9,10 @@
     <div class="form-group">
       <table>
         <thead>
-          <th></th>
         </thead>
         <tbody class='fields'>
           <tr>
             <%= f.simple_fields_for(:services) do |f| %>
-              <td>
-                <% f.hidden_field(:_destroy) do %>
-                  <%= link_to 'Supprimer', '#', class: 'remove-record' %>
-                <% end %>
-              </td>
               <td><%= f.input :ref_service, label: 'Référence Prestation'%></td>
               <td><%= f.input :description_service, label: 'Prestation' %></td>
               <td><%= f.input :unit_price, label: 'Prix unitaire' %></td>
