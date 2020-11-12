@@ -1,47 +1,39 @@
 <div>
-  <%= form_for([@company, @customer, @quote]) do |f| %>
+  <%= simple_form_for([@company, @customer, @quote]) do |f| %>
     <div class="form-group">
-      <%= label_tag(:ref_quote, 'Référence Devis:') %>
-      <%= text_field_tag(:ref_quote) %>
+      <%= f.input :ref_quote, label: 'Référence Devis:' %>
     </div>
     <div class="form-group">
-      <%= label_tag(:description, 'Description:') %>
-      <%= text_area_tag(:description) %>
+      <%= f.input :description, as: :text, label: 'Description:' %>
     </div>
     <div class="form-group">
       <table>
         <thead>
           <th></th>
-          <th><%= label_tag(:ref_service, 'Référence Prestation') %></th>
-          <th><%= label_tag(:description_service, 'Prestation') %></th>
-          <th><%= label_tag(:unit_price, 'Prix unitaire') %></th>
-          <th><%= label_tag(:quantity, 'Quantité') %></th>
-          <th><%= label_tag(:total_price_service, 'Total Prestation') %></th>
         </thead>
         <tbody class='fields'>
           <tr>
-            <%= f.fields_for(:services) do |f| %>
+            <%= f.simple_fields_for(:services) do |f| %>
               <td>
                 <% f.hidden_field(:_destroy) do %>
                   <%= link_to 'Supprimer', '#', class: 'remove-record' %>
                 <% end %>
               </td>
-              <td><%= f.text_field(:ref_service) %></td>
-              <td><%= f.text_field(:description_service) %></td>
-              <td><%= f.number_field(:unit_price) %></td>
+              <td><%= f.input :ref_service, label: 'Référence Prestation'%></td>
+              <td><%= f.input :description_service, label: 'Prestation' %></td>
+              <td><%= f.input :unit_price, label: 'Prix unitaire' %></td>
             <% end %>
-            <%= f.fields_for(:quote_services) do |f| %>
-              <td><%= f.number_field(:quantity) %></td>
-              <td><%= f.number_field(:total_price_service) %></td>
+            <%= f.simple_fields_for(:quote_services) do |f| %>
+              <td><%= f.input :quantity, label: 'Quantité' %></td>
+              <td><%= f.input :total_price_service, label: 'Total Prestation' %></td>
             <% end %>
           </tr>
         </tbody>
       </table>
     </div> 
     <div class="form-group">
-      <%= label_tag(:deposit, 'Accompte:') %>
-      <%= text_field_tag(:deposit) %>
+      <%= f.input :deposit, label: 'Accompte:' %>
     </div>
-    <%= submit_tag('Valider le devis') %>
+    <%= f.submit 'Valider le devis' %>
   <% end %>
 </div>
