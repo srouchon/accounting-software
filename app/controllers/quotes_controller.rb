@@ -4,7 +4,7 @@ class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
 
   def index
-    @quotes = policy_scope(Quote)
+    @quotes = policy_scope(Quote).where(customer_id: @customer)
   end
 
   def show
