@@ -6,7 +6,7 @@
         <th>Ref_Prestation</th>
         <th>Description</th>
         <th>Prix unitaire</th>
-        <th>Options</th>
+        <%# <th>Options</th> %>
       </tr>
     </thead>
     <tbody>
@@ -15,10 +15,10 @@
         <td><%= service.ref_service %></td>
         <td><%= service.description_service %></td>
         <td><%= service.unit_price %></td>
-        <td>
-          <%= link_to 'modifier', edit_company_service_path(@company, service), class: 'btn btn-warning' %>
-          <%= link_to 'supprimer', company_service_path(@company, service), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
-        </td>
+        <%# <td> %>
+          <%#= link_to 'modifier', edit_company_service_path(@company, service), class: 'btn btn-warning' %>
+          <%#= link_to 'supprimer', company_service_path(@company, service), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
+        <%# </td> %>
       </tr>
       <% end %>
     </tbody>

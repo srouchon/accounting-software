@@ -3,7 +3,7 @@ class ServicesController < ApplicationController
   before_action :set_service, only: [:edit, :update, :destroy]
 
   def index
-    @services = policy_scope(Service)
+    @services = policy_scope(Service).where(company_id: @company)
   end
 
   def show

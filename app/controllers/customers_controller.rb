@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
   before_action :set_company, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   
   def index
-    @customers = policy_scope(Customer).sort
+    @customers = policy_scope(Customer).where(company_id: @company).sort
   end
   
   def show
