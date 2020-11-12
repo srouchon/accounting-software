@@ -22,8 +22,9 @@
           <tr>
             <%= f.fields_for(:services) do |f| %>
               <td>
-                <%= f.hidden_field(:_destroy) %>
-                <%= link_to 'Supprimer', '#', class: 'remove-record' %>
+                <% f.hidden_field(:_destroy) do %>
+                  <%= link_to 'Supprimer', '#', class: 'remove-record' %>
+                <% end %>
               </td>
               <td><%= f.text_field(:ref_service) %></td>
               <td><%= f.text_field(:description_service) %></td>
