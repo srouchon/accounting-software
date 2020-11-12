@@ -20,21 +20,22 @@ class QuotesController < ApplicationController
   
   def create
     @quote = Quote.new(
-      ref_quote: params[:ref_quote],
-      customer_id: params[:customer_id],
-      description: params[:description],
-      deposit: params[:deposit],
-      price_duty_free: nil,
-      price_all_taxes: nil
+      ref_quote: params[:quote][:ref_quote],
+      customer_id: params[:quote][:customer_id],
+      description: params[:quote][:description],
+      deposit: params[:quote][:deposit],
+      price_duty_free: params[:quote][:price_duty_free],
+      price_all_taxes: params[:quote][:price_all_taxes],
+      customer_id: params[:customer_id]
       )
     authorize @quote
-    if @quote.save
+    if @quote.save!
       service_attr = params[:quote][:services_attributes]
       service_attr.each do |key,value|
         @service = Service.create(
-          ref_service: service_attr[key][:ref_service],
-          description_service: service_attr[key][:description_service],
-          unit_price: service_attr[key][:unit_price],
+          ref_service: value[:ref_service],
+          description_service: value[:description_service],
+          unit_price: value[:unit_price],
           company_id: params[:company_id]
         )
       end
@@ -43,8 +44,8 @@ class QuotesController < ApplicationController
         QuoteService.create(
           quote: @quote,
           service: @service,
-          quantity: quote_service_attr[key][:quantity],
-          total_price_service: quote_service_attr[key][:total_price_service]
+          quantity: value[:quantity],
+          total_price_service: value[:total_price_service]
           )
         end
       redirect_to company_customer_quote_path(@company, @customer, @quote)
@@ -61,12 +62,13 @@ class QuotesController < ApplicationController
 
   def update
     @quote.update(
-      ref_quote: params[:ref_quote],
-      customer_id: params[:customer_id],
-      description: params[:description],
-      deposit: params[:deposit],
-      price_duty_free: nil,
-      price_all_taxes: nil
+      ref_quote: params[:quote][:ref_quote],
+      customer_id: params[:quote][:customer_id],
+      description: params[:quote][:description],
+      deposit: params[:quote][:deposit],
+      price_duty_free: params[:quote][:price_duty_free],
+      price_all_taxes: params[:quote][:price_all_taxes],
+      customer_id: params[:customer_id]
       )
     authorize @quote
     if @quote.save
