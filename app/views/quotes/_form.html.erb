@@ -10,21 +10,22 @@
       <table>
         <thead>
         </thead>
-        <tbody class='services'>
-          <tr>
+        <tbody id='services'>
+          <tr class='service'>
             <%= f.simple_fields_for(:services) do |builder| %>
               <%= render 'service_fields', f: builder %>
             <% end %>
-            <%= f.simple_fields_for(:quote_services) do |f| %>
-              <td><%= f.input :quantity, label: 'Quantité' %></td>
-              <td><%= f.input :total_price_service, label: 'Total Prestation' %></td>
+            <%= f.simple_fields_for(:quote_services) do |builder| %>
+              <%= render 'quote_service_fields', f: builder %>
             <% end %>
           </tr>
         </tbody>
       </table>
     </div> 
-    <div>
-      <%= link_to_add_association 'Ajouter une prestation', f, :services, class: 'btn btn-primary', data: { association_insertion_node: '.services', association_insertion_method: :append } %>
+    <div class='links'>
+      <%= link_to_add_association 'Ajouter prestation', f, :services, class: 'btn btn-primary', data: { association_insertion_node: '#services', association_insertion_method: :append } %>
+      <%= link_to_add_association 'Ajouter quantité', f, :quote_services, class: 'btn btn-primary', data: { association_insertion_node: '#services', association_insertion_method: :append } %>
+      <%# <button id='add-service'>Ajouter une prestation</button> %>
     </div>
     <div class="form-group">
       <%= f.input :price_duty_free, label: 'Prix total HT:' %>
@@ -33,7 +34,9 @@
     <div class="form-group">
       <%= f.input :deposit, label: 'Acompte:' %>
     </div>
-    <%= f.submit 'Valider le devis' %>
-    <%= link_to '< Retour', company_customer_quotes_path(@company, @customer), class: 'btn btn-primary' %>
+    <div class='links'>  
+      <%= f.submit 'Valider le devis' %>
+      <%= link_to '< Retour', company_customer_quotes_path(@company, @customer), class: 'btn btn-primary' %>
+    </div>
   <% end %>
 </div>
