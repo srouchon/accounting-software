@@ -30,6 +30,15 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
+const btnAddService = document.getElementById('btn_add_service');
+const btnAddQuoteService = document.getElementById('btn_add_quote_service');
+const btnNewLine = document.getElementById('btn_new_line');
+
+btnNewLine.addEventListener('click', (event) => {
+  event.preventDefault();
+  btnAddService.click();
+  btnAddQuoteService.click();
+});
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:

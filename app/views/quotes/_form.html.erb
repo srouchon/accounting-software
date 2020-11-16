@@ -19,8 +19,9 @@
       </div>
     </div> 
     <div class='links'>
-      <%= link_to_add_association 'Ajouter prestation', f, :services, class: 'btn btn-primary', data: { association_insertion_node: '#services', association_insertion_method: :append } %>
-      <%= link_to_add_association 'Ajouter quantité', f, :quote_services, class: 'btn btn-primary', data: { association_insertion_node: '#services', association_insertion_method: :append } %>
+      <a href="#" id='btn_new_line'>Ajouter une prestation</a>
+      <%= link_to_add_association 'Ajouter prestation', f, :services, class: 'btn btn-primary', id: 'btn_add_service', data: { association_insertion_node: '#services', association_insertion_method: :append } %>
+      <%= link_to_add_association 'Ajouter quantité', f, :quote_services, class: 'btn btn-primary', id: 'btn_add_quote_service', data: { association_insertion_node: '#services', association_insertion_method: :append } %>
     </div>
     <div class="form-group">
       <%= f.input :price_duty_free, label: 'Prix total HT:' %>
