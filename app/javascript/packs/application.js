@@ -34,13 +34,18 @@ const btnAddService = document.getElementById('btn_add_service');
 const btnAddQuoteService = document.getElementById('btn_add_quote_service');
 const btnNewLine = document.getElementById('btn_new_line');
 
-btnNewLine.addEventListener('click', (event) => {
-  event.preventDefault();
-  btnAddService.click();
-  btnAddQuoteService.click();
-});
+function clickBtn() {
+  if (btnNewLine) {
+    btnNewLine.addEventListener('click', (event) => {
+      event.preventDefault();
+      btnAddService.click();
+      btnAddQuoteService.click();
+    }
+  )
+}};
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  clickBtn();
 });
