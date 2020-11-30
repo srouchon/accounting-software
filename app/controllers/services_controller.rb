@@ -17,8 +17,8 @@ class ServicesController < ApplicationController
   end
 
   def create
-    quote = params[:quote_id]
-    customer = params[:customer_id]
+    quote = params[:quote_id] rescue nil
+    customer = params[:customer_id] rescue nil
     service = Service.new(
       ref_service: service_params[:ref_service],
       description_service: service_params[:description_service],
@@ -27,7 +27,11 @@ class ServicesController < ApplicationController
     service.company = @company
     authorize service
     if service.save!
-      redirect_to company_customer_quote_path(@company, customer, quote)
+      if customer.nil?
+        redirect_to company_services_path(@company)
+      else
+        redirect_to company_customer_quote_path(@company, customer, quote)
+      end
     else
       render :new
     end
@@ -60,11 +64,11 @@ class ServicesController < ApplicationController
   end
   
   def set_customer
-    @customer = Customer.find(params[:customer_id])
+    @customer = Customer.find(params[:customer_id]) rescue nil
   end
   
   def set_quote
-    @quote = Quote.find(params[:quote_id])
+    @quote = Quote.find(params[:quote_id]) rescue nil
   end
 
   def set_service

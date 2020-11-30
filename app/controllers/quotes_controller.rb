@@ -8,6 +8,7 @@ class QuotesController < ApplicationController
   end
 
   def show
+    @services = Service.where(company_id: @company)
     authorize @quote
   end
 
