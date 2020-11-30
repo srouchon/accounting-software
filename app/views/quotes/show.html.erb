@@ -2,7 +2,8 @@
   <h1><%= @customer.name %></h1>
   <h2>Devis - <%= @quote.ref_quote %></h2>
   <h4><%= @quote.description %></h4>
-  <!-- <%= link_to 'Ajouter une prestation', new_company_customer_quote_path(@company, @customer, @quote), class: 'btn btn-primary' %> -->
+  <%= link_to 'Ajouter une prestation', new_company_customer_quote_service_path(@company, @customer, @quote), class: 'btn btn-primary' %>
+  <!--
   <table>
     <thead>
       <th>Ref_Prestation</th>
@@ -27,6 +28,7 @@
       <% end %>
     </tbody>
   </table>
+  -->
 </div>
 <div>
   <%= link_to 'Modifier', edit_company_customer_quote_path(@company, @customer, @quote), class: 'btn btn-warning' %>

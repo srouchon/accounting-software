@@ -1,8 +1,8 @@
 <div>
-  <%= simple_form_for([@company, @service]) do |f| %>
-    <%= f.input :ref_service %>
-    <%= f.input :description_service %>
-    <%= f.input :unit_price %>
+  <%= form_for([@company, @quote, @service], url: company_customer_quote_services_path) do |f| %>
+    <%= f.text_field :ref_service, label: 'Réf. Prestation' %>
+    <%= f.text_field :description_service, label: 'Prestation' %>
+    <%= f.text_field :unit_price, label: 'Prix unitaire' %>
     <%= f.submit %>
     <%= link_to '< Retour', company_services_path(@company), class: 'btn btn-primary' %>
   <% end %>
