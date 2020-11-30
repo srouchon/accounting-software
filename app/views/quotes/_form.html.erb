@@ -1,3 +1,12 @@
+<div>
+  <%= simple_form_for([@company, @customer, @quote]) do |f| %>
+    <%= f.input :ref_quote, label: 'Référence Devis:' %>
+    <%= f.input :description, as: :text, label: 'Description:' %>
+    <%= f.submit %>
+    <%= link_to '< Retour', company_customer_quotes_path(@company, @customer), class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
 <!--
 <div>
   <%= simple_form_for([@company, @customer, @quote]) do |f| %>

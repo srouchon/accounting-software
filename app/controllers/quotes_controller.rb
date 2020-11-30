@@ -12,46 +12,19 @@ class QuotesController < ApplicationController
   end
 
   def new
-    # @quote = Quote.new
-    # @quote.services.new # .new == .build
-    # @quote.quote_services.new
-    # authorize @quote
+    @quote = Quote.new
+    authorize @quote
   end
   
   def create
-    # @quote = Quote.new(
-    #   ref_quote: params[:quote][:ref_quote],
-    #   customer_id: params[:quote][:customer_id],
-    #   description: params[:quote][:description],
-    #   deposit: params[:quote][:deposit],
-    #   price_duty_free: params[:quote][:price_duty_free],
-    #   price_all_taxes: params[:quote][:price_all_taxes],
-    #   customer_id: params[:customer_id]
-    #   )
-    # authorize @quote
-    # if @quote.save!
-    #   service_attr = params[:quote][:services_attributes]
-    #   service_attr.each do |key,value|
-    #     @service = Service.create(
-    #       ref_service: value[:ref_service],
-    #       description_service: value[:description_service],
-    #       unit_price: value[:unit_price],
-    #       company_id: params[:company_id]
-    #     )
-    #   end
-    #   quote_service_attr = params[:quote][:quote_services_attributes]
-    #   quote_service_attr.each do |key, value|
-    #     QuoteService.create(
-    #       quote: @quote,
-    #       service: @service,
-    #       quantity: value[:quantity],
-    #       total_price_service: value[:total_price_service]
-    #       )
-    #     end
-    #   redirect_to company_customer_quote_path(@company, @customer, @quote)
-    # else
-    #   render :new
-    # end
+    quote = Quote.new(quote_params)
+    quote.customer = @customer
+    authorize quote
+    if quote.save!
+      redirect_to company_customer_quote_path(@company, @customer, quote)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -103,9 +76,9 @@ class QuotesController < ApplicationController
   end
 
   def destroy
-    # @quote.destroy
-    # authorize @quote
-    # redirect_to company_customer_quotes_path(@company, @customer)
+    @quote.destroy
+    authorize @quote
+    redirect_to company_customer_quotes_path(@company, @customer)
   end
 
   private
@@ -126,17 +99,7 @@ class QuotesController < ApplicationController
     params.require(:quote).permit(
       :description, 
       :ref_quote, 
-      :deposit, 
-      # services_attributes: [
-      #   :_destroy, 
-      #   :ref_service, 
-      #   :description_service, 
-      #   :unit_price
-      #   ],
-      # quoteservices_attributes: [
-      #   :quantity, 
-      #   :total_price_service
-      #   ]
+      :deposit
       )
   end
 end
