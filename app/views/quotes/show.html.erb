@@ -75,6 +75,8 @@
         <div>
           <%= form_for([@company, @customer, @quote]) do |f| %>
             <div class="form-group row">
+              <%= f.hidden_field(:ref_quote, value: @quote.ref_quote) %>
+              <%= f.hidden_field(:description, value: @quote.description) %>
               <%= f.label(:deposit, "Montant: ") %>
               <%= f.number_field(:deposit, required: true) %>
             </div>
@@ -87,7 +89,7 @@
     </div>
   </div>
   <p>Prix Total HT: <%= @quote.price_duty_free %> euros</p>
-  <p>Prix Total TTC: <%= @quote.price_all_taxes %> euros</p>
+  <!--<p>Prix Total TTC: <%= @quote.price_all_taxes %> euros</p>-->
 </div>
 
 <br>
