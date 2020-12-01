@@ -34,7 +34,7 @@
       </div>
       <div>
         <%= f.label(:quantity, "Quantité (unité):") %>
-        <%= f.number_field(:quantity) %>
+        <%= f.number_field(:quantity, required: true) %>
       </div>
       <%= submit_tag('Valider la prestation') %>
     <% end %>
