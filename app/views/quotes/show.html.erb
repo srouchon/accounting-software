@@ -22,7 +22,7 @@
           </div>
           <div class="form-group row">
             <%= f.label(:service, "Sélectionner une prestation: ") %>
-            <%= collection_select(:service, :service_id, Service.where(company_id: @company), :id, :description_service, prompt: true ) %>
+            <%= collection_select(:service, :service_id, Service.where(company_id: @company), :id, :description_service) %>
           </div>
           <div class="form-group row">
             <%= f.label(:quantity, "Quantité (unité): ") %>
