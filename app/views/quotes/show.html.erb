@@ -10,11 +10,11 @@
   <br>
   <div>
     <p>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseQuoteService" aria-expanded="false" aria-controls="collapseQuoteService">
         Ajouter une prestation au devis
       </button>
     </p>
-    <div class="collapse" id="collapseExample">
+    <div class="collapse" id="collapseQuoteService">
       <div class="card card-body">
         <%= form_for([@company, @customer, @quote, @quote_service]) do |f| %>
           <div class="form-group row">
@@ -65,7 +65,27 @@
 </div>
 <br>
 <div>
-  <p>Acompte: <%= @quote.deposit %> euros (aide: 20% d'acompte équivaut à ... euros)</p>
+  <div>
+    <p>Acompte:  <%= @quote.deposit %> euros <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseQuote" aria-expanded="false" aria-controls="collapseQuote">Ajouter un acompte</button></p>
+    <div class="collapse" id="collapseQuote">
+      <div class="card card-body">
+        <div>
+          <p>Aide:  Pour un acompte de 20%, le montant serait de <%= (@quote.price_duty_free * 20) / 100 %> euros.</p>
+        </div>
+        <div>
+          <%= form_for([@company, @customer, @quote]) do |f| %>
+            <div class="form-group row">
+              <%= f.label(:deposit, "Montant: ") %>
+              <%= f.number_field(:deposit, required: true) %>
+            </div>
+            <div class="form-group row">
+              <%= submit_tag('Valider') %>  
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
   <p>Prix Total HT: <%= @quote.price_duty_free %> euros</p>
   <p>Prix Total TTC: <%= @quote.price_all_taxes %> euros</p>
 </div>

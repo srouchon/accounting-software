@@ -35,7 +35,12 @@ class QuotesController < ApplicationController
   end
 
   def update
-    @quote.update(description: quote_params[:description], ref_quote: quote_params[:ref_quote]) # ne pas mettre à jour les autres éléments car valeur par défaut 0
+    @quote.update(
+      description: quote_params[:description], 
+      ref_quote: quote_params[:ref_quote],
+      deposit: (quote_params[:deposit] != 0 ? quote_params[:deposit] : 0)
+      # ne pas mettre à jour les autres éléments car valeur par défaut 0
+    )
     authorize @quote
     if @quote.save!
       redirect_to company_customer_quote_path(@company, @customer, @quote)
