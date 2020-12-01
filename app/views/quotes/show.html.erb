@@ -2,7 +2,7 @@
   <h1><%= @customer.name %></h1>
   <h2>Devis - <%= @quote.ref_quote %></h2>
   <h4><%= @quote.description %></h4>
-  
+  <%= link_to 'Modifier les informations', edit_company_customer_quote_path(@company, @customer, @quote), class: 'btn btn-warning' %>
   <table>
     <thead>
       <th>Ref_Prestation</th>
@@ -46,7 +46,6 @@
   <%= link_to 'Créer une prestation', new_company_customer_quote_service_path(@company, @customer, @quote), class: 'btn btn-primary' %>
 </div>
 <div>
-  <%= link_to 'Modifier', edit_company_customer_quote_path(@company, @customer, @quote), class: 'btn btn-warning' %>
-  <%= link_to 'Supprimer', company_customer_quote_path(@company, @customer, @quote), method: :delete, class: 'btn btn-danger', data: { confirm: "Delete?" } %>
+  <%= link_to 'Supprimer le devis', company_customer_quote_path(@company, @customer, @quote), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
   <%= link_to '< Retour', company_customer_quotes_path(@company, @customer), class: 'btn btn-primary' %>
 </div>
