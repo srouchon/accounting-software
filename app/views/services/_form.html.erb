@@ -10,7 +10,7 @@
   </div>
 <% else %>
   <div>
-    <%= simple_form_for([@company, @quote, @service]) do |f| %>
+    <%= simple_form_for([@company, @customer, @quote, @service]) do |f| %>
       <%= f.input :ref_service, label: 'Réf. Prestation' %>
       <%= f.input :description_service, label: 'Prestation' %>
       <%= f.input :unit_price, label: 'Prix unitaire' %>
