@@ -22,7 +22,7 @@
             <td><%= quote_service.quantity %></td>
             <td><%= quote_service.total_price_service %></td>
             <td>
-              <%= link_to 'Supprimer', company_customer_quote_quote_service_path(@company, @customer, @quote, quote_service), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
+              <%= link_to 'supprimer', company_customer_quote_quote_service_path(@company, @customer, @quote, quote_service), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
             </td>
           </tr>
         <% end %>

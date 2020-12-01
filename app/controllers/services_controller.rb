@@ -38,23 +38,23 @@ class ServicesController < ApplicationController
   end
 
   def edit
-    # authorize @service
+    authorize @service
   end
 
   def update
-    # @service.update(service_params)
-    # authorize @service
-    # if @service.save
-    #   redirect_to company_services_path(@company)
-    # else
-    #   render :edit
-    # end
+    @service.update(service_params)
+    authorize @service
+    if @service.save
+      redirect_to company_services_path(@company)
+    else
+      render :edit
+    end
   end
 
   def destroy
-    # @service.destroy
-    # authorize @service
-    # redirect_to company_services_path(@company)
+    @service.destroy
+    authorize @service
+    redirect_to company_services_path(@company)
   end
 
   private

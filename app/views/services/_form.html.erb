@@ -1,6 +1,6 @@
 <% if @customer.nil? && @quote.nil? %>
   <div>
-    <%= simple_form_for([@company, @service], url: company_services_path) do |f| %>
+    <%= simple_form_for([@company, @service]) do |f| %>
       <%= f.input :ref_service, label: 'Réf. Prestation' %>
       <%= f.input :description_service, label: 'Prestation' %>
       <%= f.input :unit_price, label: 'Prix unitaire' %>
@@ -10,7 +10,7 @@
   </div>
 <% else %>
   <div>
-    <%= simple_form_for([@company, @quote, @service], url: company_customer_quote_services_path) do |f| %>
+    <%= simple_form_for([@company, @quote, @service]) do |f| %>
       <%= f.input :ref_service, label: 'Réf. Prestation' %>
       <%= f.input :description_service, label: 'Prestation' %>
       <%= f.input :unit_price, label: 'Prix unitaire' %>
