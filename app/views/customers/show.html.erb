@@ -1,19 +1,27 @@
 <div>
   <h1><%= @customer.name %> - <%= @customer.ref_client %></h1>
-  <h4><%= @customer.address %></h4>
-  <h4><%= @customer.postcode %> <%= @customer.city %></h4>
-  <h4><%= @customer.phone_1 %></h4>
-  <h4><%= @customer.phone_2 %></h4>
-  <h4><%= @customer.email_1 %></h4>
-  <h4><%= @customer.email_2 %></h4>
-  <h4><%= @customer.siren %></h4>
-  <h4><%= @customer.siret %></h4>
-  <%= link_to 'Modifier les informations générales', edit_company_customer_path(@company, @customer), class: 'btn btn-warning' %>
+  <p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Voir les coordonnées
+    </button>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <div>Adresse: <%= @customer.address %> <%= @customer.postcode %> <%= @customer.city %></div>
+      <div>Téléphone: <%= @customer.phone_1 %> <%= @customer.phone_2 %></div>
+      <div>Email: <%= @customer.email_1 %> <%= @customer.email_2 %></div>
+      <div>SIREN: <%= @customer.siren %> / SIRET: <%= @customer.siret %></div>  
+    </div>
+    <br>
+    <%= link_to 'Modifier les coordonnées', edit_company_customer_path(@company, @customer), class: 'btn btn-warning' %>
+  </div>
 </div>
-
+<br>
 <div class="quote">
   <h2>Devis (5 derniers)</h2>
-  <%= link_to 'Voir tous les devis', company_customer_quotes_path(@company, @customer) %>
+  <div>
+    <%= link_to 'Voir tous les devis', company_customer_quotes_path(@company, @customer) %>
+  </div>
   <table border="1">
     <thead>
       <tr>
@@ -21,6 +29,7 @@
         <th>Description</th>
         <th>Accompte</th>
         <th>Prix HT</th>
+        <th>Options</th>
       </tr>
     </thead>
     <tbody>
@@ -33,15 +42,18 @@
           <td><%= quote.description %></td>
           <td><%= quote.deposit %></td>
           <td><%= quote.price_duty_free %></td>
+          <td><%= link_to 'voir', company_customer_quote_path(@company, @customer, quote), class: 'btn btn-secondary' %></td>
         </tr>
         <% end %>
     </tbody>
   </table>
 </div>
-
+<br>
 <div class="bill">
   <h2>Factures (5 dernières)</h2>
-  <%= link_to 'Voir toutes les factures', company_customer_bills_path(@company, @customer) %>
+  <div>
+    <%= link_to 'Voir toutes les factures', company_customer_bills_path(@company, @customer) %>
+  </div>
   <table border="1">
     <thead>
       <tr>
@@ -61,11 +73,13 @@
           <td><%= bill.description %></td>
           <td><%= bill.deposit %></td>
           <td><%= bill.price_duty_free %></td>
+          <td><%= link_to 'voir', company_customer_bill_path(@company, @customer, bill), class: 'btn btn-secondary' %></td>
         </tr>
         <% end %>
     </tbody>
   </table>
 </div>
+<br>
 <div>
   <%= link_to '< Retour', company_customers_path(@company), class: 'btn btn-primary' %>
 </div>

@@ -1,8 +1,9 @@
 <div class="bill">
-  <h2>Bills</h2>
+  <h2>Factures</h2>
   <div>
     <%= link_to 'Créer une facture', new_company_customer_bill_path(@company, @customer), class: 'btn btn-primary' %>
   </div>
+  <br>
   <table border="1">
     <thead>
       <tr>
@@ -33,6 +34,7 @@
     </tbody>
   </table>
 </div>
+<br>
 <div>
   <%= link_to '< Retour', company_customer_path(@company, @customer), class: 'btn btn-primary' %>
 </div>

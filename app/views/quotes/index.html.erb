@@ -3,6 +3,7 @@
   <div>
     <%= link_to 'Créer un devis', new_company_customer_quote_path(@company, @customer), class: 'btn btn-primary' %>
   </div>
+  <br>
   <table border="1">
     <thead>
       <tr>
@@ -26,7 +27,7 @@
           <td><%= quote.price_duty_free %></td>
           <td><%= quote.price_all_taxes %></td>
           <td>
-            <%= link_to 'modifier', edit_company_customer_quote_path(@company, @customer, quote), class: 'btn btn-warning' %>
+            <%= link_to 'voir', company_customer_quote_path(@company, @customer, quote), class: 'btn btn-secondary' %>
             <%= link_to 'supprimer', company_customer_quote_path(@company, @customer, quote), method: :delete, class: 'btn btn-danger', data: { confirm: "Delete?" } %>
           </td>
         </tr>
@@ -34,6 +35,7 @@
     </tbody>
   </table>
 </div>
+<br>
 <div>
   <%= link_to '< Retour', company_customer_path(@company, @customer), class: 'btn btn-primary' %>
 </div>

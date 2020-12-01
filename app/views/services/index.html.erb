@@ -1,6 +1,9 @@
 <div class="service">
   <h2>Prestations</h2>
-  <%= link_to 'Ajouter une prestation', new_company_service_path(@company), class: 'btn btn-primary' %>
+  <div>
+    <%= link_to 'Créer une prestation', new_company_service_path(@company), class: 'btn btn-primary' %>
+  </div>
+  <br>
   <table border="1">
     <thead>
       <tr>
@@ -25,6 +28,7 @@
     </tbody>
   </table>
 </div>
+<br>
 <div>
   <%= link_to '< Retour', company_path(@company), class: 'btn btn-primary' %>
 </div>

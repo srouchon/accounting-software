@@ -1,8 +1,11 @@
 <div>
   <h1><%= @customer.name %></h1>
-  <h2>Devis - <%= @quote.ref_quote %></h2>
-  <h4><%= @quote.description %></h4>
-  <%= link_to 'Modifier les informations', edit_company_customer_quote_path(@company, @customer, @quote), class: 'btn btn-warning' %>
+  <h4>Devis - <%= @quote.ref_quote %></h4>
+  <p><%= @quote.description %></p>
+  <div>
+    <%= link_to 'Modifier les informations', edit_company_customer_quote_path(@company, @customer, @quote), class: 'btn btn-warning' %>
+  </div>
+  <br>
   <table>
     <thead>
       <th>Ref_Prestation</th>
@@ -29,22 +32,36 @@
       <% end %>
     </tbody>
   </table>
-  
-  <div class="form-group d-flex">
-    <%= form_for([@company, @customer, @quote, @quote_service]) do |f| %>
-      <div>
-        <%= f.label(:service, "Choisir une prestation:") %>
-        <%= collection_select(:service, :service_id, Service.where(company_id: @company), :id, :description_service, prompt: true ) %>
+  <br>
+  <div>
+    <p>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Ajouter une prestation au devis
+      </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <%= form_for([@company, @customer, @quote, @quote_service]) do |f| %>
+          <div class="form-group row">
+            <%= link_to 'Créer une nouvelle prestation', new_company_customer_quote_service_path(@company, @customer, @quote) %>
+          </div>
+          <div class="form-group row">
+            <%= f.label(:service, "Sélectionner une prestation: ") %>
+            <%= collection_select(:service, :service_id, Service.where(company_id: @company), :id, :description_service, prompt: true ) %>
+          </div>
+          <div class="form-group row">
+            <%= f.label(:quantity, "Quantité (unité): ") %>
+            <%= f.number_field(:quantity, required: true) %>
+          </div>
+          <div class="form-group row">
+            <%= submit_tag('Valider la prestation') %>  
+          </div>
+        <% end %>
       </div>
-      <div>
-        <%= f.label(:quantity, "Quantité (unité):") %>
-        <%= f.number_field(:quantity, required: true) %>
-      </div>
-      <%= submit_tag('Valider la prestation') %>
-    <% end %>
+    </div>
   </div>
-  <%= link_to 'Créer une prestation', new_company_customer_quote_service_path(@company, @customer, @quote), class: 'btn btn-primary' %>
 </div>
+<br>
 <div>
   <%= link_to 'Supprimer le devis', company_customer_quote_path(@company, @customer, @quote), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
   <%= link_to '< Retour', company_customer_quotes_path(@company, @customer), class: 'btn btn-primary' %>

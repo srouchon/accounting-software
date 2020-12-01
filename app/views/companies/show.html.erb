@@ -1,13 +1,28 @@
 <div>
-  <h1><%= @company.name %></h1>
-  <h3>Tableau de bord</h3>
+  <h1><%= @company.name %></h1>  
+  <p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Voir les coordonnées
+    </button>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <div>Adresse: <%= @company.address %> <%= @company.postcode %> <%= @company.city %></div>
+      <div>Téléphone: <%= @company.phone %></div>
+      <div>Email: <%= @company.email %></div>
+      <div>SIRET: <%= @company.siret %></div>  
+    </div>
+    <br>
+    <%= link_to 'Modifier les coordonnées', edit_company_path(@company), class: 'btn btn-warning' %>
+  </div>
 </div>
+<br>
 <div>
-  <%= link_to 'Clients', company_customers_path(@company), class: 'btn btn-info' %>
-  <%= link_to 'Prestations', company_services_path(@company), class: 'btn btn-info' %>
+  <%= link_to 'Listes des Clients', company_customers_path(@company), class: 'btn btn-info' %>
+  <%= link_to 'Catalogue de Prestations', company_services_path(@company), class: 'btn btn-info' %>
 </div>
+<br>
 <div>
-  <%= link_to 'Modifier', edit_company_path(@company), class: 'btn btn-warning' %>
-  <%= link_to 'Supprimer', company_path(@company), method: :delete, class: 'btn btn-danger', data: { confirm: "Delete?" } %>
-  <%= link_to '< Retour', companies_path, class: 'btn btn-primary' %>
+  <%= link_to "Supprimer l'entreprise", company_path(@company), method: :delete, class: 'btn btn-danger', data: { confirm: "Delete?" } %>
+  <%= link_to "Choisir une autre entreprise", companies_path, class: 'btn btn-primary' %>
 </div>

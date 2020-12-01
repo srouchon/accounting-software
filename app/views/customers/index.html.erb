@@ -1,11 +1,15 @@
-<div>
+<div><%= link_to 'Créer un client', new_company_customer_path(@company), class: 'btn btn-primary' %></div><br>
+<div class="card-deck">
   <% @customers.each do |customer| %>
-    <%= link_to company_customer_path(@company, customer) do %>
-      <%= customer.name %> - <%= customer.ref_client %>
-    <% end %>
+    <div class="card">
+      <div class="card-body">
+          <%= link_to company_customer_path(@company, customer) do %>
+            <h5 class="card-title"><%= customer.name %></h5>
+          <% end %>
+        <p class="card-text"><%= customer.ref_client %></p>
+      </div>
+    </div>
   <% end %>
 </div>
-<div>
-  <%= link_to 'Créer un client', new_company_customer_path(@company), class: 'btn btn-primary' %>
-  <%= link_to '< Retour', company_path(@company), class: 'btn btn-primary' %>
-</div>
+<br>
+<%= link_to '< Retour', company_path(@company), class: 'btn btn-primary' %>
