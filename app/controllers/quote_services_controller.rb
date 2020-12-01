@@ -9,12 +9,13 @@ class QuoteServicesController < ApplicationController
   
   def create
     service = Service.find(params[:service][:service_id])
-    quote_service = QuoteService.new(quote_services_params)
-    quote_service.service = service
-    quote_service.quote = @quote
-    quote_service.total_price_service = service.unit_price * quote_service.quantity
-    authorize quote_service
-    if quote_service.save!
+    @quote_service = QuoteService.new(quote_services_params)
+    @quote_service.service = service
+    @quote_service.quote = @quote
+    @quote_service.total_price_service = service.unit_price * @quote_service.quantity
+    authorize @quote_service
+    if @quote_service.save!
+      @quote.update(price_duty_free: (@quote.price_duty_free + @quote_service.total_price_service))
       redirect_to company_customer_quote_path(@company, @customer, @quote)
     else
       render :new
@@ -23,6 +24,7 @@ class QuoteServicesController < ApplicationController
   
   def destroy
     quote_service = QuoteService.find(params[:id])
+    @quote.update(price_duty_free: (@quote.price_duty_free - quote_service.total_price_service))
     quote_service.destroy
     authorize quote_service
     redirect_to company_customer_quote_path(@company, @customer, @quote)

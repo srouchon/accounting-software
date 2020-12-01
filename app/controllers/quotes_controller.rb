@@ -35,7 +35,7 @@ class QuotesController < ApplicationController
   end
 
   def update
-    @quote.update(quote_params)
+    @quote.update(description: quote_params[:description], ref_quote: quote_params[:ref_quote]) # ne pas mettre à jour les autres éléments car valeur par défaut 0
     authorize @quote
     if @quote.save!
       redirect_to company_customer_quote_path(@company, @customer, @quote)
@@ -65,6 +65,6 @@ class QuotesController < ApplicationController
   end
 
   def quote_params
-    params.require(:quote).permit(:description, :ref_quote, :deposit)
+    params.require(:quote).permit(:description, :ref_quote, :deposit, :price_duty_free, :price_all_taxes)
   end
 end

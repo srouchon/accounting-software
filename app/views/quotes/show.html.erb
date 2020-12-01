@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1><%= @customer.name %></h1>
-    <h4>Devis - <%= @quote.ref_quote %></h4>
+    <h4>Devis - réf. <%= @quote.ref_quote %></h4>
     <p><%= @quote.description %></p>
     <div>
       <%= link_to 'Modifier les informations', edit_company_customer_quote_path(@company, @customer, @quote), class: 'btn btn-warning' %>
@@ -65,9 +65,9 @@
 </div>
 <br>
 <div>
-  <p>Acompte: <%= @quote.deposit %></p>
-  <p>Prix Total HT: <%= @quote.price_duty_free %></p>
-  <p>Prix Total TTC: <%= @quote.price_all_taxes %></p>
+  <p>Acompte: <%= @quote.deposit %> euros (aide: 20% d'acompte équivaut à ... euros)</p>
+  <p>Prix Total HT: <%= @quote.price_duty_free %> euros</p>
+  <p>Prix Total TTC: <%= @quote.price_all_taxes %> euros</p>
 </div>
 
 <br>
