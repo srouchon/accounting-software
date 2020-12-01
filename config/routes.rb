@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :companies do
     resources :customers do
       resources :quotes do
+        resources :quote_services
         resources :services, only: [:new, :create]
       end
       resources :bills
