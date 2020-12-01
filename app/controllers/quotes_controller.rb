@@ -1,8 +1,24 @@
 class QuotesController < ApplicationController
-  before_action :set_customer, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  before_action :set_company, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  before_action :set_quote, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:pdf, :index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :set_company, only: [:pdf, :index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :set_quote, only: [:pdf, :show, :edit, :update, :destroy]
 
+  def pdf
+    respond_to do |format|
+      format.pdf do
+          render pdf: "Devis",
+          page_size: 'A4',
+          template: "quotes/pdf.html.erb",
+          layout: "pdf.html.erb",
+          orientation: "Portrait",
+          lowquality: true,
+          zoom: 1,
+          dpi: 75
+      end
+    end
+    authorize @quote
+  end
+  
   def index
     @quotes = policy_scope(Quote).where(customer_id: @customer)
   end

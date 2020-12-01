@@ -35,6 +35,8 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'cocoon', '~> 1.2', '>= 1.2.15'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

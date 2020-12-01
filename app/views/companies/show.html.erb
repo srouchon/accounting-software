@@ -18,11 +18,11 @@
 </div>
 <br>
 <div>
-  <%= link_to 'Listes des Clients', company_customers_path(@company), class: 'btn btn-info' %>
+  <%= link_to 'Liste des Clients', company_customers_path(@company), class: 'btn btn-info' %>
   <%= link_to 'Catalogue de Prestations', company_services_path(@company), class: 'btn btn-info' %>
 </div>
 <br>
 <div>
-  <%= link_to "Supprimer l'entreprise", company_path(@company), method: :delete, class: 'btn btn-danger', data: { confirm: "Delete?" } %>
   <%= link_to "Choisir une autre entreprise", companies_path, class: 'btn btn-primary' %>
+  <%= link_to "Supprimer l'entreprise", company_path(@company), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
 </div>

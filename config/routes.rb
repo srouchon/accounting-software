@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       resources :quotes do
         resources :quote_services
         resources :services, only: [:new, :create]
+        member do
+          get :pdf
+        end
       end
       resources :bills
     end

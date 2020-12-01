@@ -1,5 +1,9 @@
 <div>
   <div>
+    <%= link_to 'Télécharger PDF', pdf_company_customer_quote_path([@company, @customer, @quote], format: :pdf), class: 'btn btn-secondary' %>
+  </div>
+  <br>
+  <div>
     <h1><%= @customer.name %></h1>
     <h4>Devis - réf. <%= @quote.ref_quote %></h4>
     <p><%= @quote.description %></p>

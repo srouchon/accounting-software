@@ -4,6 +4,10 @@ class QuotePolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def pdf?
+    true
+  end
   
   def show?
     true
