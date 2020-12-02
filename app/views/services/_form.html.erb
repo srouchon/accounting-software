@@ -2,7 +2,7 @@
   <div>
     <%= simple_form_for([@company, @service]) do |f| %>
       <%= f.input :ref_service, label: 'Référence Prestation:' %>
-      <p>(aide: dernière référence utilisée <%= Service.last.ref_service %>)</p>
+      <p>(aide: dernière référence utilisée '<%= Service.where(company_id: @company).last ? Service.where(company_id: @company).last.ref_service : 'aucune précédente prestation' %>')</p>
       <%= f.input :description_service, label: 'Description:' %>
       <%= f.input :unit_price, label: 'Prix unitaire:' %>
       <%= f.submit %>
@@ -13,7 +13,7 @@
   <div>
     <%= simple_form_for([@company, @customer, @quote, @service]) do |f| %>
       <%= f.input :ref_service, label: 'Référence Prestation:' %>
-      <p>(aide: dernière référence utilisée <%= Service.last.ref_service %>)</p>
+      <p>(aide: dernière référence utilisée '<%= Service.where(company_id: @company).last ? Service.where(company_id: @company).last.ref_service : 'aucune précédente prestation' %>')</p>
       <%= f.input :description_service, label: 'Description:' %>
       <%= f.input :unit_price, label: 'Prix unitaire:' %>
       <%= f.submit %>
@@ -24,7 +24,7 @@
   <div>
     <%= simple_form_for([@company, @customer, @bill, @service]) do |f| %>
       <%= f.input :ref_service, label: 'Référence Prestation:' %>
-      <p>(aide: dernière référence utilisée <%= Service.last.ref_service %>)</p>
+      <p>(aide: dernière référence utilisée '<%= Service.where(company_id: @company).last ? Service.where(company_id: @company).last.ref_service : 'aucune précédente prestation' %>')</p>
       <%= f.input :description_service, label: 'Description:' %>
       <%= f.input :unit_price, label: 'Prix unitaire:' %>
       <%= f.submit %>
