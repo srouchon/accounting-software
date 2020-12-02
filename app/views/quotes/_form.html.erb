@@ -1,6 +1,7 @@
 <div>
   <%= simple_form_for([@company, @customer, @quote]) do |f| %>
     <%= f.input :ref_quote, label: 'Référence Devis:' %>
+    <p>(aide: dernière référence utilisée <%= Quote.last.ref_quote %>)</p>
     <%= f.input :description, as: :text, label: 'Description:' %>
     <%= f.hidden_field :deposit, value: (@quote.deposit ? @quote.deposit : 0) %>
     <%= f.hidden_field :price_duty_free, value: 0 %>

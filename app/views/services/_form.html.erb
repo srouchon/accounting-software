@@ -1,9 +1,10 @@
 <% if @customer.nil? && @quote.nil? %>
   <div>
     <%= simple_form_for([@company, @service]) do |f| %>
-      <%= f.input :ref_service, label: 'Réf. Prestation' %>
-      <%= f.input :description_service, label: 'Prestation' %>
-      <%= f.input :unit_price, label: 'Prix unitaire' %>
+      <%= f.input :ref_service, label: 'Référence Prestation:' %>
+      <p>(aide: dernière référence utilisée <%= Service.last.ref_service %>)</p>
+      <%= f.input :description_service, label: 'Description:' %>
+      <%= f.input :unit_price, label: 'Prix unitaire:' %>
       <%= f.submit %>
       <%= link_to '< Retour', company_services_path(@company), class: 'btn btn-primary' %>
     <% end %>
@@ -11,9 +12,10 @@
 <% else %>
   <div>
     <%= simple_form_for([@company, @customer, @quote, @service]) do |f| %>
-      <%= f.input :ref_service, label: 'Réf. Prestation' %>
-      <%= f.input :description_service, label: 'Prestation' %>
-      <%= f.input :unit_price, label: 'Prix unitaire' %>
+      <%= f.input :ref_service, label: 'Référence Prestation:' %>
+      <p>(aide: dernière référence utilisée <%= Service.last.ref_service %>)</p>
+      <%= f.input :description_service, label: 'Description:' %>
+      <%= f.input :unit_price, label: 'Prix unitaire:' %>
       <%= f.submit %>
       <%= link_to '< Retour', company_customer_quote_path(@company, @customer, @quote), class: 'btn btn-primary' %>
     <% end %>
