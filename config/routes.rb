@@ -11,7 +11,13 @@ Rails.application.routes.draw do
           get :pdf
         end
       end
-      resources :bills
+      resources :bills do
+        resources :bill_services
+        resources :services, only: [:new, :create]
+        # member do
+        #   get :pdf
+        # end
+      end
     end
     resources :services
   end

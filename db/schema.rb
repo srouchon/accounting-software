@@ -10,18 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_062136) do
+ActiveRecord::Schema.define(version: 2020_12_02_081736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bill_services", force: :cascade do |t|
+    t.bigint "bill_id", null: false
+    t.bigint "service_id", null: false
+    t.float "quantity"
+    t.float "total_price_service"
+    t.index ["bill_id"], name: "index_bill_services_on_bill_id"
+    t.index ["service_id"], name: "index_bill_services_on_service_id"
+  end
 
   create_table "bills", force: :cascade do |t|
     t.string "ref_bill"
     t.bigint "customer_id", null: false
     t.text "description"
-    t.integer "deposit"
-    t.integer "price_duty_free"
-    t.integer "price_all_taxes"
+    t.float "deposit"
+    t.float "price_duty_free"
+    t.float "price_all_taxes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_bills_on_customer_id"
@@ -65,8 +74,8 @@ ActiveRecord::Schema.define(version: 2020_12_02_062136) do
     t.bigint "service_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "quantity"
-    t.integer "total_price_service"
+    t.float "quantity"
+    t.float "total_price_service"
     t.index ["quote_id"], name: "index_quote_services_on_quote_id"
     t.index ["service_id"], name: "index_quote_services_on_service_id"
   end
@@ -75,9 +84,9 @@ ActiveRecord::Schema.define(version: 2020_12_02_062136) do
     t.string "ref_quote"
     t.bigint "customer_id", null: false
     t.text "description"
-    t.integer "deposit"
-    t.integer "price_duty_free"
-    t.integer "price_all_taxes"
+    t.float "deposit"
+    t.float "price_duty_free"
+    t.float "price_all_taxes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_quotes_on_customer_id"
@@ -108,6 +117,8 @@ ActiveRecord::Schema.define(version: 2020_12_02_062136) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bill_services", "bills"
+  add_foreign_key "bill_services", "services"
   add_foreign_key "bills", "customers"
   add_foreign_key "customers", "companies"
   add_foreign_key "quote_services", "quotes"

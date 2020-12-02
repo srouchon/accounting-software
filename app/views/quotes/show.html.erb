@@ -31,7 +31,7 @@
           </div>
           <div class="form-group row">
             <%= f.label(:quantity, "Quantité (unité): ") %>
-            <%= f.number_field(:quantity, required: true) %>
+            <%= f.text_field(:quantity, required: true) %>
           </div>
           <div class="form-group row">
             <%= submit_tag('Valider la prestation') %>  
@@ -75,7 +75,7 @@
     <div class="collapse" id="collapseQuote">
       <div class="card card-body">
         <div class='row'>
-          <p>Aide:  Pour un acompte de 20%, le montant serait de <%= (@quote.price_duty_free * 20) / 100 %> euros.</p>
+          <p>Aide:  Pour un acompte de 20%, le montant serait de <%= ((@quote.price_duty_free * 20) / 100).round(2) %> euros.</p>
         </div>
         <div>
           <%= form_for([@company, @customer, @quote]) do |f| %>
@@ -83,7 +83,7 @@
               <%= f.hidden_field(:ref_quote, value: @quote.ref_quote) %>
               <%= f.hidden_field(:description, value: @quote.description) %>
               <%= f.label(:deposit, "Montant: ") %>
-              <%= f.number_field(:deposit, required: true) %>
+              <%= f.text_field(:deposit, required: true) %>
             </div>
             <div class="form-group row">
               <%= submit_tag('Valider') %>  

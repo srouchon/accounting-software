@@ -2,6 +2,7 @@ class ServicesController < ApplicationController
   before_action :set_company, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :set_customer, only: [:new, :create]
   before_action :set_quote, only: [:new, :create]
+  before_action :set_bill, only: [:new, :create]
   before_action :set_service, only: [:edit, :update, :destroy]
 
   def index
@@ -18,6 +19,7 @@ class ServicesController < ApplicationController
 
   def create
     quote = params[:quote_id] rescue nil
+    bill = params[:bill_id] rescue nil
     customer = params[:customer_id] rescue nil
     service = Service.new(
       ref_service: service_params[:ref_service],
@@ -29,8 +31,10 @@ class ServicesController < ApplicationController
     if service.save!
       if customer.nil?
         redirect_to company_services_path(@company)
-      else
+      elsif bill.nil?
         redirect_to company_customer_quote_path(@company, customer, quote)
+      elsif quote.nil?
+        redirect_to company_customer_bill_path(@company, customer, bill)
       end
     else
       render :new
@@ -69,6 +73,10 @@ class ServicesController < ApplicationController
   
   def set_quote
     @quote = Quote.find(params[:quote_id]) rescue nil
+  end
+  
+  def set_bill
+    @bill = Bill.find(params[:bill_id]) rescue nil
   end
 
   def set_service

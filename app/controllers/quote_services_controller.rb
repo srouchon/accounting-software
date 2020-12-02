@@ -15,10 +15,10 @@ class QuoteServicesController < ApplicationController
     @quote_service.total_price_service = service.unit_price * @quote_service.quantity
     authorize @quote_service
     if @quote_service.save!
-      new_price_duty_free = @quote.price_duty_free + @quote_service.total_price_service
+      new_price_duty_free = (@quote.price_duty_free + @quote_service.total_price_service).round(2)
       @quote.update(
         price_duty_free: new_price_duty_free,
-        price_all_taxes: new_price_duty_free + (new_price_duty_free * (@company.tva / 100))
+        price_all_taxes: (new_price_duty_free + (new_price_duty_free * (@company.tva / 100))).round(2)
         )
       redirect_to company_customer_quote_path(@company, @customer, @quote)
     else
@@ -28,10 +28,10 @@ class QuoteServicesController < ApplicationController
   
   def destroy
     quote_service = QuoteService.find(params[:id])
-    new_price_duty_free = @quote.price_duty_free - quote_service.total_price_service
+    new_price_duty_free = (@quote.price_duty_free - quote_service.total_price_service).round(2)
     @quote.update(
       price_duty_free: new_price_duty_free,
-      price_all_taxes: new_price_duty_free + (new_price_duty_free * (@company.tva / 100))
+      price_all_taxes: (new_price_duty_free + (new_price_duty_free * (@company.tva / 100))).round(2)
       )
     quote_service.destroy
     authorize quote_service

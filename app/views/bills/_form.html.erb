@@ -1,11 +1,12 @@
 <div>
   <%= simple_form_for([@company, @customer, @bill]) do |f| %>
-    <%= f.input :ref_bill %>
-    <%= f.input :description %>
-    <%= f.input :deposit %>
-    <%= f.input :price_duty_free %>
-    <%= f.input :price_all_taxes %>
+    <%= f.input :ref_bill, label: 'Référence Facture:' %>
+    <p>(aide: dernière référence utilisée '<%= Bill.last ? Bill.last.ref_bill : 'aucune précédente facture' %>')</p>
+    <%= f.input :description, as: :text, label: 'Description:' %>
+    <%= f.hidden_field :deposit, value: (@bill.deposit ? @bill.deposit : 0) %>
+    <%= f.hidden_field :price_duty_free, value: 0 %>
+    <%= f.hidden_field :price_all_taxes, value: 0 %>
     <%= f.submit %>
-    <%= link_to '< Retour', company_customers_path(@company), class: 'btn btn-primary' %>
+    <%= link_to '< Retour', company_customer_bills_path(@company, @customer), class: 'btn btn-primary' %>
   <% end %>
 </div>

@@ -4,10 +4,11 @@ class BillsController < ApplicationController
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bills = policy_scope(Bill)
+    @bills = policy_scope(Bill).where(customer_id: @customer)
   end
   
   def show
+    @bill_service = BillService.new
     authorize @bill
   end
   
@@ -29,13 +30,20 @@ class BillsController < ApplicationController
   end
   
   def edit
+    @bill.services.where(company_id: @company)
+    @bill.bill_services.where(bill: @bill)
     authorize @bill
   end
   
   def update
-    @bill.update(bill_params)
+    @bill.update(
+      description: bill_params[:description], 
+      ref_bill: bill_params[:ref_bill],
+      deposit: (bill_params[:deposit] != 0 ? bill_params[:deposit] : 0)
+      # ne pas mettre à jour les autres éléments car valeur par défaut 0
+    )
     authorize @bill
-    if @bill.save
+    if @bill.save!
       redirect_to company_customer_bill_path(@company, @customer, @bill)
     else
       render :edit
