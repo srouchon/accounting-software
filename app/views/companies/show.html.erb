@@ -1,8 +1,8 @@
 <div>
   <h1><%= @company.name %></h1>  
   <p>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Voir les coordonnées
+    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Voir les informations de l'entreprise
     </button>
   </p>
   <div class="collapse" id="collapseExample">
@@ -10,10 +10,15 @@
       <div>Adresse: <%= @company.address %> <%= @company.postcode %> <%= @company.city %></div>
       <div>Téléphone: <%= @company.phone %></div>
       <div>Email: <%= @company.email %></div>
-      <div>SIRET: <%= @company.siret %></div>  
+      <div>SIRET: <%= @company.siret %></div>
+      <div>Taux de TVA: <%= @company.tva %> %</div>
+      <br>
+      <div>
+        <%= link_to "Modifier", edit_company_path(@company), class: 'btn btn-warning' %>
+      </div>
+      
     </div>
     <br>
-    <%= link_to 'Modifier les coordonnées', edit_company_path(@company), class: 'btn btn-warning' %>
   </div>
 </div>
 <br>

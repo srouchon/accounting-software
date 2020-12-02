@@ -12,10 +12,10 @@ user2 = User.create!(email: 'baptiste@test.com', password: 'baptiste', firstname
 
 
 puts 'Create some compamies'
-company1 = Company.new(name: 'Entreprise1', address: 'Cours Portal', postcode: 33000, city: 'Bordeaux', phone: '0505050505', email: 'entreprise1@test.com', siret: '11111111111')
+company1 = Company.new(name: 'Entreprise1', address: 'Cours Portal', postcode: 33000, city: 'Bordeaux', phone: '0505050505', email: 'entreprise1@test.com', siret: '11111111111', tva: 20)
 company1.user = user1
 company1.save!
-company2 = Company.new(name: 'Entreprise2', address: 'Cours Saint Louis', postcode: 33000, city: 'Bordeaux', phone: '0505050505', email: 'entreprise2@test.com', siret: '12111111113')
+company2 = Company.new(name: 'Entreprise2', address: 'Cours Saint Louis', postcode: 33000, city: 'Bordeaux', phone: '0505050505', email: 'entreprise2@test.com', siret: '12111111113', tva: 5.5)
 company2.user = user1
 company2.save!
 

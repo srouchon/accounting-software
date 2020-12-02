@@ -7,6 +7,7 @@
     <%= f.input :phone, label: 'Téléphone' %>
     <%= f.input :email, label: 'Email'%>
     <%= f.input :siret, label: 'SIRET' %>
+    <%= f.input :tva, label: "Taux de TVA (si vous n'êtes pas assujetti à la TVA, saisir le montant '0')" %>
     <%= f.submit %>
     <%= link_to '< Retour', companies_path, class: 'btn btn-primary' %>
   <% end %>

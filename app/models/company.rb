@@ -10,4 +10,6 @@ class Company < ApplicationRecord
   validates :phone, presence: true
   validates :email, presence: true
   validates :siret, presence: true
+  validates :siret, presence: true
+  validates :tva, presence: true
 end
