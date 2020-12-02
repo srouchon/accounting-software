@@ -1,12 +1,12 @@
 <div>
   <%= simple_form_for(@company) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :address %>
-    <%= f.input :postcode %>
-    <%= f.input :city %>
-    <%= f.input :phone %>
-    <%= f.input :email %>
-    <%= f.input :siret %>
+    <%= f.input :name, label: 'Dénomination sociale'%>
+    <%= f.input :address, label: 'Adresse' %>
+    <%= f.input :postcode, label: 'Code postal' %>
+    <%= f.input :city, label: 'Ville' %>
+    <%= f.input :phone, label: 'Téléphone' %>
+    <%= f.input :email, label: 'Email'%>
+    <%= f.input :siret, label: 'SIRET' %>
     <%= f.submit %>
     <%= link_to '< Retour', companies_path, class: 'btn btn-primary' %>
   <% end %>

@@ -21,9 +21,10 @@
     <div class="collapse" id="collapseQuoteService">
       <div class="card card-body">
         <%= form_for([@company, @customer, @quote, @quote_service]) do |f| %>
-          <div class="form-group row">
+          <div class="row">
             <%= link_to 'Créer une nouvelle prestation', new_company_customer_quote_service_path(@company, @customer, @quote) %>
           </div>
+          <br>
           <div class="form-group row">
             <%= f.label(:service, "Sélectionner une prestation: ") %>
             <%= collection_select(:service, :service_id, Service.where(company_id: @company), :id, :description_service) %>
@@ -73,7 +74,7 @@
     <p>Acompte:  <%= @quote.deposit %> euros <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseQuote" aria-expanded="false" aria-controls="collapseQuote">Ajouter un acompte</button></p>
     <div class="collapse" id="collapseQuote">
       <div class="card card-body">
-        <div>
+        <div class='row'>
           <p>Aide:  Pour un acompte de 20%, le montant serait de <%= (@quote.price_duty_free * 20) / 100 %> euros.</p>
         </div>
         <div>
