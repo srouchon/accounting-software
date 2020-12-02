@@ -1,8 +1,8 @@
 <div>
   <h1><%= @customer.name %> - <%= @customer.ref_client %></h1>
   <p>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Voir les coordonnées
+    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Voir les informations du client
     </button>
   </p>
   <div class="collapse" id="collapseExample">
@@ -10,10 +10,13 @@
       <div>Adresse: <%= @customer.address %> <%= @customer.postcode %> <%= @customer.city %></div>
       <div>Téléphone: <%= @customer.phone_1 %> <%= @customer.phone_2 %></div>
       <div>Email: <%= @customer.email_1 %> <%= @customer.email_2 %></div>
-      <div>SIREN: <%= @customer.siren %> / SIRET: <%= @customer.siret %></div>  
+      <div>SIREN: <%= @customer.siren %> / SIRET: <%= @customer.siret %></div>
+      <br>
+      <div>
+        <%= link_to 'Modifier', edit_company_customer_path(@company, @customer), class: 'btn btn-warning' %>
+      </div>
     </div>
-    <br>
-    <%= link_to 'Modifier les coordonnées', edit_company_customer_path(@company, @customer), class: 'btn btn-warning' %>
+    
   </div>
 </div>
 <br>
