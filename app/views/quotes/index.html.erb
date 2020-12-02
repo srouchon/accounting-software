@@ -11,7 +11,7 @@
         <th>Description du devis</th>
         <th>Acompte</th>
         <th>Prix HT</th>
-        <!--<th>Prix TTC</th>-->
+        <th>Prix TTC</th>
         <th></th>
       </tr>
     </thead>
@@ -25,7 +25,7 @@
           <td><%= quote.description %></td>
           <td><%= quote.deposit %></td>
           <td><%= quote.price_duty_free %></td>
-          <!--<td><%= quote.price_all_taxes %></td>-->
+          <td><%= quote.price_all_taxes %></td>
           <td>
             <%= link_to 'voir', company_customer_quote_path(@company, @customer, quote), class: 'btn btn-secondary' %>
             <%= link_to 'supprimer', company_customer_quote_path(@company, @customer, quote), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
