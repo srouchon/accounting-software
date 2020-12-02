@@ -12,7 +12,7 @@ class BillServicesController < ApplicationController
     @bill_service = BillService.new(bill_services_params)
     @bill_service.service = service
     @bill_service.bill = @bill
-    @bill_service.total_price_service = service.unit_price * @bill_service.quantity
+    @bill_service.total_price_service = (service.unit_price * @bill_service.quantity).round(2)
     authorize @bill_service
     if @bill_service.save!
       new_price_duty_free = (@bill.price_duty_free + @bill_service.total_price_service).round(2)

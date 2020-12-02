@@ -12,7 +12,7 @@ class QuoteServicesController < ApplicationController
     @quote_service = QuoteService.new(quote_services_params)
     @quote_service.service = service
     @quote_service.quote = @quote
-    @quote_service.total_price_service = service.unit_price * @quote_service.quantity
+    @quote_service.total_price_service = (service.unit_price * @quote_service.quantity).round(2)
     authorize @quote_service
     if @quote_service.save!
       new_price_duty_free = (@quote.price_duty_free + @quote_service.total_price_service).round(2)
