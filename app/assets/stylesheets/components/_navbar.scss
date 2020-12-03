@@ -30,10 +30,10 @@
   transition: all 0.1s;
 }
 
-.separator {
-  margin: 3rem 0;
-  border-bottom: 1px dashed #fff;
-}
+// .separator {
+//   margin: 3rem 0;
+//   border-bottom: 1px dashed #fff;
+// }
 
 /* TOGGLE BUTTON FOR NAVBAR */
 
@@ -43,7 +43,7 @@
 
 #content.active {
   width: 100%;
-  margin: 0;
+  margin: auto;
 }
 @media (max-width: 767px) {
   #sidebar {
@@ -54,10 +54,14 @@
   }
   #content {
     width: 100%;
-    margin: 0;
+    margin: 30px auto;
   }
   #content.active {
     margin-left: 17rem;
     width: calc(100% - 17rem);
   }
+}
+
+#sidebarCollapse {
+  margin-bottom: 30px;
 }

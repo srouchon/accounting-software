@@ -23,7 +23,15 @@
 .page-content {
   width: calc(100% - 17rem);
   margin-left: 17rem;
-  // transition: all 0.1s;
+  // transition: all 0.05s;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+.card {
+  width: 519px;
+}
+
+.row {
+  padding: 10px;
 }

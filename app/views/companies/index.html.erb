@@ -1,31 +1,34 @@
 <div>
-  <h3 class='text-center'>Sélectionner une entreprise</h3>
-  <br>
-  <div class="card-deck">
-    <% @companies.each do |company| %>
-      <div class="card">
-        <div class="card-body p-4">
-          <%= link_to company_path(company) do %>
-            <h4 class="card-title text-center"><%= company.name %></h4>
-          <% end %>
-          <br>
-          <h6 class="card-title">Adresse:  <%= company.address %> <%= company.postcode %> <%= company.city %></h6>
-          <h6 class="card-title">Téléphone:  <%= company.phone %></h6>
-          <h6 class="card-title">Email:  <%= company.email %></h6>
-          <h6 class="card-title">SIRET:  <%= company.siret %></h6>
-          <h6 class="card-title">Taux de TVA:  <%= company.tva %> %</h6>
-          <br>
-          <div class='row justify-content-around'>
-            <div><%= link_to "sélectionner", company_path(company), class: 'btn btn-secondary' %></div>
-            <div><%= link_to "modifier", edit_company_path(company), class: 'btn btn-warning' %></div>
-            <div><%= link_to "supprimer définitivement", company_path(company), method: :delete, class: 'btn btn-danger', data: { confirm: "Etes-vous sûr(e) de vouloir supprimer cette entreprise?" } %></div>  
+  <div class="row justify-content-center">
+    <h3>Sélectionner une entreprise</h3>
+  </div>
+  <div class="row">
+    <div class="card-deck justify-content-center">
+      <% @companies.each do |company| %>
+        <div class="card">
+          <div class="card-body p-4">
+            <div>
+              <%= link_to company_path(company) do %>
+                <h4 class="card-title text-center"><%= company.name %></h4>
+              <% end %>
+              <br>
+              <h6 class="card-title">Adresse:  <%= company.address %> <%= company.postcode %> <%= company.city %></h6>
+              <h6 class="card-title">Téléphone:  <%= company.phone %></h6>
+              <h6 class="card-title">Email:  <%= company.email %></h6>
+              <h6 class="card-title">SIRET:  <%= company.siret %></h6>
+              <h6 class="card-title">Taux de TVA:  <%= company.tva %> %</h6>
+            </div>
+            <div class='row justify-content-around'>
+              <div class='mx-2'><%= link_to "sélectionner", company_path(company), class: 'btn btn-secondary' %></div>
+              <div class='mx-2'><%= link_to "modifier", edit_company_path(company), class: 'btn btn-warning' %></div>
+              <div class='mx-2'><%= link_to "supprimer", company_path(company), method: :delete, class: 'btn btn-danger', data: { confirm: "Etes-vous sûr(e) de vouloir supprimer cette entreprise?" } %></div>  
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-  <br><br>
-  <div class='text-center'>
-    <%= link_to 'Créer une nouvelle entreprise', new_company_path, class: 'btn btn-primary' %>
+  <div class='row text-center'>
+    <%= link_to 'créer une nouvelle entreprise', new_company_path, class: 'btn btn-primary' %>
   </div>
 </div>

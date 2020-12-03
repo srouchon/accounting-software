@@ -1,7 +1,7 @@
 <div class="service">
-  <h1>Mes Prestations</h1>
+  <h1>Liste des Prestations</h1>
   <div>
-    <%= link_to 'Créer une prestation', new_company_service_path(@company), class: 'btn btn-primary' %>
+    <%= link_to 'créer une prestation', new_company_service_path(@company), class: 'btn btn-primary' %>
   </div>
   <br>
   <table border="1">
@@ -21,7 +21,7 @@
         <td><%= service.unit_price %></td>
         <td>
           <%= link_to 'modifier', edit_company_service_path(@company, service), class: 'btn btn-warning' %>
-          <%= link_to 'supprimer', company_service_path(@company, service), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
+          <%= link_to 'supprimer', company_service_path(@company, service), method: :delete, class: 'btn btn-danger', data: { confirm: "Etes-vous sûr(e) de vouloir supprimer cette prestation?" } %>
         </td>
       </tr>
       <% end %>

@@ -1,20 +1,34 @@
 <div>
-  <h1>Mes Clients</h1>
-  <div><%= link_to 'Créer un client', new_company_customer_path(@company), class: 'btn btn-primary' %></div><br>
-  <div class="card-deck">
-    <% @customers.each do |customer| %>
-      <div class="card">
-        <div class="card-body">
-            <%= link_to company_customer_path(@company, customer) do %>
-              <h5 class="card-title"><%= customer.name %></h5>
-            <% end %>
-          <p class="card-text"><%= customer.ref_client %></p>
-        </div>
-      </div>
-    <% end %>
+  <div class="row justify-content-between">
+    <h1>Liste des Clients</h1>
+    <div>
+      <%= link_to 'créer un nouveau client', new_company_customer_path(@company), class: 'btn btn-primary' %></div>
+    </div>
   </div>
-  <br>
-  <div>
-    <%#= link_to '< Revenir au Tableau de Bord', company_path(@company), class: 'btn btn-primary' %>
+  <div class="row">
+    <div class="card-deck">
+      <% @customers.each do |customer| %>
+        <div class="card">
+          <div class="card-body p-4">
+            <div>
+              <%= link_to company_customer_path(@company, customer) do %>
+                <h4 class="card-title"><%= customer.name %></h4>
+              <% end %>
+              <br>
+              <h6 class="card-title">Réf: <span><%= customer.ref_client %></span></h6>
+              <h6 class="card-title">Adresse: <span><%= customer.address %> <%= customer.postcode %> <%= customer.city %></span></h6>
+              <h6 class="card-title">Téléphone(s): <span><%= customer.phone_1 %> <%= customer.phone_2 %></span></h6>
+              <h6 class="card-title">Email(s): <span><%= customer.email_1 %> <%= customer.email_2 %></span></h6>
+              <h6 class="card-title">SIREN: <span><%= customer.siren %></span> / SIRET: <span><%= customer.siret %></span></h6>
+            </div>
+            <div class='row justify-content-around'>
+              <div class='mx-2'><%= link_to "sélectionner", company_customer_path(@company, customer), class: 'btn btn-secondary' %></div>
+              <div class='mx-2'><%= link_to "modifier", edit_company_customer_path(@company, customer), class: 'btn btn-warning' %></div>
+              <div class='mx-2'><%= link_to "supprimer", company_customer_path(@company, customer), method: :delete, class: 'btn btn-danger', data: { confirm: "Etes-vous sûr(e) de vouloir supprimer ce client?" } %></div>  
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

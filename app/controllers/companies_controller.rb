@@ -18,7 +18,8 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
     @company.user = current_user
     authorize @company
-    if @company.save!
+    if @company.valid?
+      @company.save
       redirect_to company_path(@company)
     else
       render :new

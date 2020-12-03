@@ -1,17 +1,17 @@
 class Company < ApplicationRecord
   belongs_to :user
   has_many :customers, dependent: :destroy
-  has_many :quotes, through: :customers, dependent: :destroy
-  has_many :bills, through: :customers, dependent: :destroy
-  has_many :services
+  has_many :quotes, through: :customers
+  has_many :bills, through: :customers
+  has_many :services, dependent: :destroy
 
-  validates :name, presence: true
-  validates :address, presence: true
-  validates :postcode, presence: true
-  validates :city, presence: true
-  validates :phone, presence: true
-  validates :email, presence: true
-  validates :siret, presence: true
-  validates :siret, presence: true
-  validates :tva, presence: true
+  validates :name, presence: { message: "Champ incorrect ou incomplet" }
+  validates :address, presence: { message: "Champ incorrect ou incomplet" }
+  validates :postcode, presence: { message: "Champ incorrect ou incomplet" }
+  validates :city, presence: { message: "Champ incorrect ou incomplet" }
+  validates :phone, presence: { message: "Champ incorrect ou incomplet" }
+  validates :email, presence: { message: "Champ incorrect ou incomplet" }
+  validates :siret, presence: { message: "Champ incorrect ou incomplet" }
+  validates :siret, presence: { message: "Champ incorrect ou incomplet" }
+  validates :tva, presence: { message: "Champ incorrect ou incomplet" }
 end
