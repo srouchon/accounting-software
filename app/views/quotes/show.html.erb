@@ -100,5 +100,5 @@
 <br>
 <div>
   <%= link_to 'Supprimer le devis', company_customer_quote_path(@company, @customer, @quote), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
-  <%= link_to '< Retour', company_customer_quotes_path(@company, @customer), class: 'btn btn-primary' %>
+  <%= link_to '< Revenir au client', company_customer_path(@company, @customer), class: 'btn btn-primary' %>
 </div>
