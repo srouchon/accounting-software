@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gestion de la Relation client</title>
+    <title>Easy Accounting</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,10 +12,16 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
-    <div class="container my-5">
-      <%= yield %> 
-    </div>
+    <% if user_signed_in? %>
+      <%= render 'shared/navbar' %>
+      <div class="container my-5 page-content">
+        <%= yield %> 
+      </div>
+    <% else %>
+      <div class="container my-5">
+        <%= yield %>
+      </div>
+    <% end %>
     <%= render 'shared/flashes' %>
   </body>
 </html>
