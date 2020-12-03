@@ -14,7 +14,8 @@
   <body>
     <% if user_signed_in? %>
       <%= render 'shared/navbar' %>
-      <div class="container my-5 page-content">
+      <div class="p-5 my-3 page-content" id="content">
+        <%= render 'shared/toggle_btn' %>
         <%= yield %> 
       </div>
     <% else %>

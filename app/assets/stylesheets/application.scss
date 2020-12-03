@@ -24,4 +24,6 @@
   width: calc(100% - 17rem);
   margin-left: 17rem;
   // transition: all 0.1s;
+  min-height: 100vh;
+  overflow-x: hidden;
 }

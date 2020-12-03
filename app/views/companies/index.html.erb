@@ -1,8 +1,5 @@
 <div>
-  <h1>Choisir votre entreprise</h1>
-  <div>
-    <%= link_to 'Créer une nouvelle entreprise', new_company_path, class: 'btn btn-primary' %>
-  </div>
+  <h3 class='text-center'>Sélectionner une entreprise</h3>
   <br>
   <div class="card-deck">
     <% @companies.each do |company| %>
@@ -16,5 +13,9 @@
         </div>
       </div>
     <% end %>
+  </div>
+  <br><br>
+  <div class='text-center'>
+    <%= link_to 'Créer une nouvelle entreprise', new_company_path, class: 'btn btn-primary' %>
   </div>
 </div>
