@@ -1,12 +1,31 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+/* VERTICAL NAVBAR */
+
+#half h1 {
+  font-family: 'Tahoma', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  color: black;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+#half a:hover {
+  text-decoration: none;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+#nav-company h3 {
+  font-family: 'Tahoma', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+}
+
+.vertical-nav {
+  position: absolute;
+  min-width: 16rem;
+  width: 16rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.1s;
 }

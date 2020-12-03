@@ -12,9 +12,16 @@
 @import "components/index";
 @import "pages/index";
 
-#btn_add_service {
-  display: none;
-}
-#btn_add_quote_service {
-  display: none;
+// #btn_add_service {
+//   display: none;
+// }
+
+// #btn_add_quote_service {
+//   display: none;
+// }
+
+.page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  // transition: all 0.1s;
 }

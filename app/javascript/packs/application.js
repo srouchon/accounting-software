@@ -28,8 +28,8 @@ require("@nathanvda/cocoon")
 import "bootstrap";
 
 // Internal imports, e.g:
-import { clickBtn } from '../channels/form.js';
+// import { clickBtn } from '../channels/form.js';
 
 document.addEventListener('turbolinks:load', () => {
-  clickBtn();
+  // clickBtn();
 });
