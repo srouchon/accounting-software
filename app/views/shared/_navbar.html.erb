@@ -16,7 +16,7 @@
     </div>
     <div>
       <ul class="nav flex-column bg-white mb-0">
-        <% if @company.nil? %>
+        <% if @company.nil? || @company.id.nil? %>
           <li class="nav-item">
             <%= link_to companies_path, class: "nav-link text-dark" do %>
               <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
