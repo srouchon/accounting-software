@@ -10,9 +10,9 @@
       <div>SIREN: <%= @customer.siren %> / SIRET: <%= @customer.siret %></div>
     </div>
     <div class="text-right">
-      <div><%= link_to "supprimer ce client", company_customers_path(@company), method: :delete, class: 'btn btn-danger', data: { confirm: "Etes-vous sûr(e) de vouloir supprimer ce client?" } %></div>
+      <div><%= link_to "Supprimer ce client", company_customers_path(@company), method: :delete, class: 'btn btn-danger', data: { confirm: "Etes-vous sûr(e) de vouloir supprimer ce client?" } %></div>
       <br>
-      <div><%= link_to 'modifier ses informations', edit_company_customer_path(@company, @customer), class: 'btn btn-warning' %></div>
+      <div><%= link_to 'Modifier ses informations', edit_company_customer_path(@company, @customer), class: 'btn btn-warning' %></div>
     </div>
   </div>
 </div>
@@ -24,7 +24,7 @@
     </div>
     <div class=''>
       <div>
-        <%= link_to 'créer un devis', new_company_customer_quote_path(@company, @customer), class: 'btn btn-primary' %>
+        <%= link_to 'Créer un devis', new_company_customer_quote_path(@company, @customer), class: 'btn btn-primary' %>
       </div>
     </div>
   </div>
@@ -52,8 +52,8 @@
             <td><%= quote.price_duty_free %></td>
             <td><%= quote.price_all_taxes %></td>
             <td>
-              <%= link_to 'voir', company_customer_quote_path(@company, @customer, quote), class: 'btn btn-secondary' %>
-              <%= link_to 'supprimer', company_customer_quote_path(@company, @customer, quote), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
+              <%= link_to 'Voir', company_customer_quote_path(@company, @customer, quote), class: 'btn btn-secondary' %>
+              <%= link_to 'Supprimer', company_customer_quote_path(@company, @customer, quote), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
             </td>
           </tr>
           <% end %>
@@ -68,7 +68,7 @@
       <h2>Factures du client</h2>
     </div>
     <div>
-      <div><%= link_to 'créer une facture', new_company_customer_bill_path(@company, @customer), class: 'btn btn-primary' %></div>
+      <div><%= link_to 'Créer une facture', new_company_customer_bill_path(@company, @customer), class: 'btn btn-primary' %></div>
     </div>
   </div>
   <div class="row">
@@ -95,8 +95,8 @@
             <td><%= bill.price_duty_free %></td>
             <td><%= bill.price_all_taxes %></td>
             <td>
-              <%= link_to 'voir', company_customer_bill_path(@company, @customer, bill), class: 'btn btn-secondary' %>
-              <%= link_to 'supprimer', company_customer_bill_path(@company, @customer, bill), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
+              <%= link_to 'Voir', company_customer_bill_path(@company, @customer, bill), class: 'btn btn-secondary' %>
+              <%= link_to 'Supprimer', company_customer_bill_path(@company, @customer, bill), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
             </td>
           </tr>
           <% end %>
@@ -106,5 +106,5 @@
 </div>
 <br>
 <div class="row">
-  <div><%= link_to 'revenir à la liste de clients', company_customers_path(@company), class: 'btn btn-primary' %></div>
+  <div><%= link_to 'Revenir à la liste de clients', company_customers_path(@company), class: 'btn btn-primary' %></div>
 </div>

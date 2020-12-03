@@ -1,14 +1,19 @@
 <div>
-  <%= simple_form_for(@company) do |f| %>
-    <%= f.input :name, label: 'Dénomination sociale'%>
-    <%= f.input :address, label: 'Adresse' %>
-    <%= f.input :postcode, label: 'Code postal' %>
-    <%= f.input :city, label: 'Ville' %>
-    <%= f.input :phone, label: 'Téléphone' %>
-    <%= f.input :email, label: 'Email'%>
-    <%= f.input :siret, label: 'SIRET' %>
-    <%= f.input :tva, label: "Taux de TVA (si vous n'êtes pas assujetti à la TVA, saisir le montant '0')" %>
-    <%= f.submit %>
-    <%= link_to 'Annuler', companies_path, class: 'btn btn-primary' %>
-  <% end %>
+  <div class="row">
+    <h1><%= @company.persisted? ? "Modifier les informations du l'entreprise" : "Créer une nouvelle entreprise" %></h1>
+  </div>
+  <div>
+    <%= simple_form_for(@company) do |f| %>
+      <%= f.input :name, label: 'Dénomination sociale'%>
+      <%= f.input :address, label: 'Adresse' %>
+      <%= f.input :postcode, label: 'Code postal' %>
+      <%= f.input :city, label: 'Ville' %>
+      <%= f.input :phone, label: 'Téléphone' %>
+      <%= f.input :email, label: 'Email'%>
+      <%= f.input :siret, label: 'SIRET' %>
+      <%= f.input :tva, label: "Taux de TVA (si vous n'êtes pas assujetti à la TVA, saisir le montant '0')" %>
+      <%= f.submit @company.persisted? ? "Modifier cette entreprise" : "Créer cette entreprise", class: 'btn btn-secondary' %>
+      <%= link_to 'Annuler', companies_path, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
 </div>

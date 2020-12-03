@@ -33,7 +33,7 @@
             <td><%= quote.price_duty_free %></td>
             <td><%= quote.price_all_taxes %></td>
             <td>
-              <%= link_to 'voir', company_customer_quote_path(@company, quote.customer.id, quote.id), class: 'btn btn-secondary' %>
+              <%= link_to 'Voir', company_customer_quote_path(@company, quote.customer.id, quote.id), class: 'btn btn-secondary' %>
             </td>
           </tr>
         <% end %>
@@ -73,7 +73,7 @@
             <td><%= bill.price_duty_free %></td>
             <td><%= bill.price_all_taxes %></td>
             <td>
-              <%= link_to 'voir', company_customer_bill_path(@company, bill.customer.id, bill.id), class: 'btn btn-secondary' %>
+              <%= link_to 'Voir', company_customer_bill_path(@company, bill.customer.id, bill.id), class: 'btn btn-secondary' %>
             </td>
           </tr>
         <% end %>
