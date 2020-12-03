@@ -86,7 +86,10 @@
           <td><%= bill.deposit %></td>
           <td><%= bill.price_duty_free %></td>
           <td><%= bill.price_all_taxes %></td>
-          <td><%= link_to 'voir', company_customer_bill_path(@company, @customer, bill), class: 'btn btn-secondary' %></td>
+          <td>
+            <%= link_to 'voir', company_customer_bill_path(@company, @customer, bill), class: 'btn btn-secondary' %>
+            <%= link_to 'supprimer', company_customer_bill_path(@company, @customer, bill), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
+          </td>
         </tr>
         <% end %>
     </tbody>

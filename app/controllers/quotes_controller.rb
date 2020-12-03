@@ -68,7 +68,7 @@ class QuotesController < ApplicationController
   def destroy
     @quote.destroy
     authorize @quote
-    redirect_to company_customer_quotes_path(@company, @customer)
+    redirect_to company_customer_path(@company, @customer)
   end
 
   private

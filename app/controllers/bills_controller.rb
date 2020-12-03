@@ -53,7 +53,7 @@ class BillsController < ApplicationController
   def destroy
     @bill.destroy
     authorize @bill
-    redirect_to company_customer_bills_path(@company, @customer)
+    redirect_to company_customer_path(@company, @customer)
   end
   
   private
