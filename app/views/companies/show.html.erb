@@ -1,35 +1,8 @@
 <div>
-  <h1><%= @company.name %></h1>  
-  <p>
-    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Voir les informations de l'entreprise
-    </button>
-  </p>
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-      <div>Adresse: <%= @company.address %> <%= @company.postcode %> <%= @company.city %></div>
-      <div>Téléphone: <%= @company.phone %></div>
-      <div>Email: <%= @company.email %></div>
-      <div>SIRET: <%= @company.siret %></div>
-      <div>Taux de TVA: <%= @company.tva %> %</div>
-      <br>
-      <div>
-        <%= link_to "Modifier", edit_company_path(@company), class: 'btn btn-warning' %>
-      </div>
-    </div>
-    <br>
-  </div>
-</div>
-<br>
-<div>
-  <h3>Tableau de Bord</h3>
-  <!--<div>
-    <%= link_to 'Liste des Clients', company_customers_path(@company), class: 'btn btn-info' %>
-    <%= link_to 'Catalogue de Prestations', company_services_path(@company), class: 'btn btn-info' %>
-  </div>-->
+  <h1>Tableau de Bord</h1>
   <br>
   <div class="quote">
-    <h4>Devis</h4>
+    <h3>Mes Devis</h3>
     <table border="1">
       <thead>
         <tr>
@@ -69,7 +42,7 @@
   </div>
   <br>
   <div class="bill">
-    <h4>Factures</h4>
+    <h3>Mes Factures</h3>
     <table border="1">
       <thead>
         <tr>
@@ -107,9 +80,4 @@
       </tbody>
     </table>
   </div>
-</div>
-<br>
-<div>
-  <%= link_to "Sélectionner une autre entreprise", companies_path, class: 'btn btn-primary' %>
-  <%= link_to "Supprimer l'entreprise", company_path(@company), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
 </div>

@@ -4,12 +4,22 @@
   <div class="card-deck">
     <% @companies.each do |company| %>
       <div class="card">
-        <div class="card-body">
+        <div class="card-body p-4">
           <%= link_to company_path(company) do %>
-            <h5 class="card-title"><%= company.name %></h5>
+            <h4 class="card-title text-center"><%= company.name %></h4>
           <% end %>
-          <h6 class="card-title"><%= company.address %></h6>
-          <h6 class="card-title"><%= company.postcode %> <%= company.city %></h6>
+          <br>
+          <h6 class="card-title">Adresse:  <%= company.address %> <%= company.postcode %> <%= company.city %></h6>
+          <h6 class="card-title">Téléphone:  <%= company.phone %></h6>
+          <h6 class="card-title">Email:  <%= company.email %></h6>
+          <h6 class="card-title">SIRET:  <%= company.siret %></h6>
+          <h6 class="card-title">Taux de TVA:  <%= company.tva %> %</h6>
+          <br>
+          <div class='row justify-content-around'>
+            <div><%= link_to "sélectionner", company_path(company), class: 'btn btn-secondary' %></div>
+            <div><%= link_to "modifier", edit_company_path(company), class: 'btn btn-warning' %></div>
+            <div><%= link_to "supprimer définitivement", company_path(company), method: :delete, class: 'btn btn-danger', data: { confirm: "Etes-vous sûr(e) de vouloir supprimer cette entreprise?" } %></div>  
+          </div>
         </div>
       </div>
     <% end %>

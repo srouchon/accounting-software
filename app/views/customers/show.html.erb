@@ -21,7 +21,7 @@
 </div>
 <br>
 <div class="quote">
-  <h2>Devis</h2>
+  <h2>Devis du client</h2>
   <div>
     <%= link_to 'Créer un devis', new_company_customer_quote_path(@company, @customer), class: 'btn btn-primary' %>
   </div>
@@ -59,7 +59,7 @@
 </div>
 <br>
 <div class="bill">
-  <h2>Factures</h2>
+  <h2>Factures du client</h2>
   <div>
     <%= link_to 'Créer une facture', new_company_customer_bill_path(@company, @customer), class: 'btn btn-primary' %>
   </div>
@@ -95,7 +95,7 @@
     </tbody>
   </table>
 </div>
-<br>
+<br><br>
 <div>
-  <%= link_to '< Revenir à la liste de clients', company_customers_path(@company), class: 'btn btn-primary' %>
+  <%= link_to 'Revenir à la liste de clients', company_customers_path(@company), class: 'btn btn-primary' %>
 </div>
