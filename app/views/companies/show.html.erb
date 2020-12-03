@@ -51,7 +51,11 @@
                 <%= quote.ref_quote %>
               <% end %>
             </td>
-            <td><%= quote.customer.name %></td>
+            <td>
+              <%= link_to company_customer_path(@company, quote.customer.id) do %>
+                <%= quote.customer.name %>
+              <% end %>
+            </td>
             <td><%= quote.description %></td>
             <td><%= quote.deposit %></td>
             <td><%= quote.price_duty_free %></td>
@@ -87,7 +91,11 @@
                 <%= bill.ref_bill %>
               <% end %>
             </td>
-            <td><%= bill.customer.name %></td>
+            <td>
+              <%= link_to company_customer_path(@company, bill.customer.id) do %>
+                <%= bill.customer.name %>
+              <% end %>
+            </td>
             <td><%= bill.description %></td>
             <td><%= bill.deposit %></td>
             <td><%= bill.price_duty_free %></td>
