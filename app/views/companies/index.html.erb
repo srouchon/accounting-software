@@ -1,17 +1,20 @@
 <div>
-  <%= link_to 'Créer une nouvelle entreprise', new_company_path, class: 'btn btn-primary' %>
-</div>
-<br>
-<div class="card-deck">
-  <% @companies.each do |company| %>
-    <div class="card">
-      <div class="card-body">
-        <%= link_to company_path(company) do %>
-          <h5 class="card-title"><%= company.name %></h5>
-        <% end %>
-        <h6 class="card-title"><%= company.address %></h6>
-        <h6 class="card-title"><%= company.postcode %> <%= company.city %></h6>
+  <h1>Choisir votre entreprise</h1>
+  <div>
+    <%= link_to 'Créer une nouvelle entreprise', new_company_path, class: 'btn btn-primary' %>
+  </div>
+  <br>
+  <div class="card-deck">
+    <% @companies.each do |company| %>
+      <div class="card">
+        <div class="card-body">
+          <%= link_to company_path(company) do %>
+            <h5 class="card-title"><%= company.name %></h5>
+          <% end %>
+          <h6 class="card-title"><%= company.address %></h6>
+          <h6 class="card-title"><%= company.postcode %> <%= company.city %></h6>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
