@@ -10,7 +10,7 @@
       <div>SIREN: <%= @customer.siren %> / SIRET: <%= @customer.siret %></div>
     </div>
     <div class="text-right">
-      <div><%= link_to "Supprimer ce client", company_customers_path(@company), method: :delete, class: 'btn btn-danger', data: { confirm: "Etes-vous sûr(e) de vouloir supprimer ce client?" } %></div>
+      <div><%= link_to "Supprimer ce client", company_customer_path(@company, @customer), method: :delete, class: 'btn btn-danger', data: { confirm: "Etes-vous sûr(e) de vouloir supprimer ce client?" } %></div>
       <br>
       <div><%= link_to 'Modifier ses informations', edit_company_customer_path(@company, @customer), class: 'btn btn-warning' %></div>
     </div>
@@ -37,7 +37,6 @@
           <th>Acompte</th>
           <th>Prix HT</th>
           <th>Prix TTC</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -53,7 +52,6 @@
             <td><%= quote.price_all_taxes %></td>
             <td>
               <%= link_to 'Voir', company_customer_quote_path(@company, @customer, quote), class: 'btn btn-secondary' %>
-              <%= link_to 'Supprimer', company_customer_quote_path(@company, @customer, quote), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
             </td>
           </tr>
           <% end %>
@@ -80,7 +78,6 @@
           <th>Acompte</th>
           <th>Prix HT</th>
           <th>Prix TTC</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -96,7 +93,6 @@
             <td><%= bill.price_all_taxes %></td>
             <td>
               <%= link_to 'Voir', company_customer_bill_path(@company, @customer, bill), class: 'btn btn-secondary' %>
-              <%= link_to 'Supprimer', company_customer_bill_path(@company, @customer, bill), method: :delete, class: 'btn btn-danger', data: { confirm: "Supprimer?" } %>
             </td>
           </tr>
           <% end %>

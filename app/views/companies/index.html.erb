@@ -1,34 +1,36 @@
 <div>
-  <div class="row justify-content-center">
-    <h3>Sélectionner une entreprise</h3>
+  <div class="row d-flex">
+    <h1 class="mr-auto">Sélectionner une entreprise</h1>
+    <div>
+      <%= link_to 'Créer une nouvelle entreprise', new_company_path, class: 'btn btn-primary' %>
+    </div>
   </div>
   <div class="row">
-    <div class="card-deck justify-content-center">
+    <div class="cards">
       <% @companies.each do |company| %>
         <div class="card">
           <div class="card-body p-4">
             <div>
-              <%= link_to company_path(company) do %>
-                <h4 class="card-title text-center"><%= company.name %></h4>
-              <% end %>
-              <br>
+              <div class="row d-flex">
+                <div class="mr-auto">
+                  <%= link_to company_path(company) do %>
+                    <h4 class="card-title text-center"><%= company.name %></h4>
+                  <% end %>
+                </div>
+                <div>
+                  <%= link_to edit_company_path(company), class: 'text-warning' do %><i class="far fa-edit"></i><% end %>
+                </div>
+              </div>
               <h6 class="card-title">Adresse:  <%= company.address %> <%= company.postcode %> <%= company.city %></h6>
               <h6 class="card-title">Téléphone:  <%= company.phone %></h6>
               <h6 class="card-title">Email:  <%= company.email %></h6>
               <h6 class="card-title">SIRET:  <%= company.siret %></h6>
               <h6 class="card-title">Taux de TVA:  <%= company.tva %> %</h6>
             </div>
-            <div class='row justify-content-around'>
-              <div class='mx-2'><%= link_to "Sélectionner", company_path(company), class: 'btn btn-secondary' %></div>
-              <div class='mx-2'><%= link_to "Modifier", edit_company_path(company), class: 'btn btn-warning' %></div>
-              <div class='mx-2'><%= link_to "Supprimer", company_path(company), method: :delete, class: 'btn btn-danger', data: { confirm: "Etes-vous sûr(e) de vouloir supprimer cette entreprise?" } %></div>  
-            </div>
+            <div class='row'><%= link_to "Sélectionner", company_path(company), class: 'btn btn-secondary w-100' %></div>
           </div>
         </div>
       <% end %>
     </div>
-  </div>
-  <div class='row text-center'>
-    <%= link_to 'Créer une nouvelle entreprise', new_company_path, class: 'btn btn-primary' %>
   </div>
 </div>

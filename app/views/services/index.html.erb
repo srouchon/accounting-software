@@ -1,16 +1,16 @@
-<div class="service">
-  <h1>Liste des Prestations</h1>
+<div class="service row d-flex">
+  <h1 class="mr-auto">Liste des Prestations</h1>
   <div>
     <%= link_to 'Créer une prestation', new_company_service_path(@company), class: 'btn btn-primary' %>
   </div>
-  <br>
+</div><br>
+<div class="row d-flex" >
   <table border="1">
     <thead>
       <tr>
         <th>Ref_Prestation</th>
-        <th>Description</th>
+        <th>Description de la prestation</th>
         <th>Prix unitaire</th>
-        <th>Options</th>
       </tr>
     </thead>
     <tbody>
@@ -18,7 +18,7 @@
       <tr>
         <td><%= service.ref_service %></td>
         <td><%= service.description_service %></td>
-        <td><%= service.unit_price %></td>
+        <td class='text-right'><%= service.unit_price %> €</td>
         <td>
           <%= link_to 'Modifier', edit_company_service_path(@company, service), class: 'btn btn-warning' %>
           <%= link_to 'Supprimer', company_service_path(@company, service), method: :delete, class: 'btn btn-danger', data: { confirm: "Etes-vous sûr(e) de vouloir supprimer cette prestation?" } %>

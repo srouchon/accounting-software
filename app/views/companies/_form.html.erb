@@ -12,8 +12,11 @@
       <%= f.input :email, label: 'Email'%>
       <%= f.input :siret, label: 'SIRET' %>
       <%= f.input :tva, label: "Taux de TVA (si vous n'êtes pas assujetti à la TVA, saisir le montant '0')" %>
-      <%= f.submit @company.persisted? ? "Modifier cette entreprise" : "Créer cette entreprise", class: 'btn btn-secondary' %>
       <%= link_to 'Annuler', companies_path, class: 'btn btn-primary' %>
+      <% unless @company.id.nil? %> 
+        <%= link_to "Supprimer cette entreprise", company_path(@company), method: :delete, class: 'btn btn-danger', data: { confirm: "Etes-vous sûr(e) de vouloir supprimer cette entreprise?" } %>
+      <% end %>
+      <%= f.submit @company.persisted? ? "Modifier cette entreprise" : "Créer cette entreprise", class: 'btn btn-secondary' %>
     <% end %>
   </div>
 </div>

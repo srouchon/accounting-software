@@ -10,8 +10,8 @@
       <%= f.hidden_field :deposit, value: (@quote.deposit ? @quote.deposit : 0) %>
       <%= f.hidden_field :price_duty_free, value: 0 %>
       <%= f.hidden_field :price_all_taxes, value: 0 %>
+      <%= link_to 'Annuler', company_customer_quote_path(@company, @customer, @quote), class: 'btn btn-primary' %>
       <%= f.submit @quote.persisted? ? "Modifier ce devis" : "Créer ce devis", class: 'btn btn-secondary' %>
-      <%= link_to 'Annuler', company_customer_path(@company, @customer), class: 'btn btn-primary' %>
     <% end %>
   </div>
 </div>
