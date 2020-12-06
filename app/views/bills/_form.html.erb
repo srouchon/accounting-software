@@ -10,7 +10,7 @@
       <%= f.hidden_field :deposit, value: (@bill.deposit ? @bill.deposit : 0) %>
       <%= f.hidden_field :price_duty_free, value: 0 %>
       <%= f.hidden_field :price_all_taxes, value: 0 %>
-      <%= link_to 'Annuler', @bill.id.nil ? company_customer_bill_path(@company, @customer, @bill) : company_customer_path(@company, @customer), class: 'btn btn-primary' %>
+      <%= link_to 'Annuler', @bill.id.nil? ? company_customer_bill_path(@company, @customer, @bill) : company_customer_path(@company, @customer), class: 'btn btn-primary' %>
       <%= f.submit @bill.persisted? ? "Modifier cette facture" : "Créer cette facture", class: 'btn btn-secondary' %>
     <% end %>
   </div>
