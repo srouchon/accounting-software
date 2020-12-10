@@ -14,4 +14,20 @@ class Company < ApplicationRecord
   validates :siret, presence: { message: "Champ incorrect ou incomplet" }
   validates :siret, presence: { message: "Champ incorrect ou incomplet" }
   validates :tva, presence: { message: "Champ incorrect ou incomplet" }
+  
+  def nb_quotes
+    self.quotes.count
+  end
+  
+  def nb_bills
+    self.bills.count
+  end
+  
+  def nb_quotes_per_customer(customer)
+    self.quotes.where(customer: customer).count
+  end
+  
+  def nb_bills_per_customer(customer)
+    self.bills.where(customer: customer).count
+  end
 end
