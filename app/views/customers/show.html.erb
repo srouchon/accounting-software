@@ -28,36 +28,42 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Référence</th>
-          <th>Description du devis</th>
-          <th>Acompte</th>
-          <th>Prix HT</th>
-          <th>Prix TTC</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @quotes.each do |quote| %>
+  <% if @customer.quotes.blank? %>
+    <div class="row d-flex">
+      <p>Pas de devis</p>
+    </div>
+  <% else %>
+    <div class="row">
+      <table border="1">
+        <thead>
           <tr>
-            <td>          
-              <%= link_to company_customer_quote_path(@company, @customer, quote) do %>
-                <%= quote.ref_quote %></td>
-              <% end %>
-            <td><%= quote.description %></td>
-            <td><%= quote.deposit %></td>
-            <td><%= quote.price_duty_free %></td>
-            <td><%= quote.price_all_taxes %></td>
-            <td>
-              <%= link_to 'Voir', company_customer_quote_path(@company, @customer, quote), class: 'btn btn-secondary' %>
-            </td>
+            <th>Référence</th>
+            <th>Description du devis</th>
+            <th>Acompte</th>
+            <th>Prix HT</th>
+            <th>Prix TTC</th>
           </tr>
-          <% end %>
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          <% @quotes.each do |quote| %>
+            <tr>
+              <td>          
+                <%= link_to company_customer_quote_path(@company, @customer, quote) do %>
+                  <%= quote.ref_quote %></td>
+                <% end %>
+              <td><%= quote.description %></td>
+              <td><%= quote.deposit %></td>
+              <td><%= quote.price_duty_free %></td>
+              <td><%= quote.price_all_taxes %></td>
+              <td>
+                <%= link_to 'Voir', company_customer_quote_path(@company, @customer, quote), class: 'btn btn-secondary' %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
 </div>
 <br>
 <div class="bill">
@@ -69,36 +75,42 @@
       <div><%= link_to 'Créer une facture', new_company_customer_bill_path(@company, @customer), class: 'btn btn-primary' %></div>
     </div>
   </div>
-  <div class="row">
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Référence</th>
-          <th>Description de la facture</th>
-          <th>Acompte</th>
-          <th>Prix HT</th>
-          <th>Prix TTC</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @bills.each do |bill| %>
+  <% if @customer.bills.blank? %>
+    <div class="row d-flex">
+      <p>Pas de facture</p>
+    </div>
+  <% else %>
+    <div class="row">
+      <table border="1">
+        <thead>
           <tr>
-            <td>          
-              <%= link_to company_customer_bill_path(@company, @customer, bill) do %>
-                <%= bill.ref_bill %></td>
-              <% end %>
-            <td><%= bill.description %></td>
-            <td><%= bill.deposit %></td>
-            <td><%= bill.price_duty_free %></td>
-            <td><%= bill.price_all_taxes %></td>
-            <td>
-              <%= link_to 'Voir', company_customer_bill_path(@company, @customer, bill), class: 'btn btn-secondary' %>
-            </td>
+            <th>Référence</th>
+            <th>Description de la facture</th>
+            <th>Acompte</th>
+            <th>Prix HT</th>
+            <th>Prix TTC</th>
           </tr>
-          <% end %>
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          <% @bills.each do |bill| %>
+            <tr>
+              <td>          
+                <%= link_to company_customer_bill_path(@company, @customer, bill) do %>
+                  <%= bill.ref_bill %></td>
+                <% end %>
+              <td><%= bill.description %></td>
+              <td><%= bill.deposit %></td>
+              <td><%= bill.price_duty_free %></td>
+              <td><%= bill.price_all_taxes %></td>
+              <td>
+                <%= link_to 'Voir', company_customer_bill_path(@company, @customer, bill), class: 'btn btn-secondary' %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
 </div>
 <br>
 <div class="row">
