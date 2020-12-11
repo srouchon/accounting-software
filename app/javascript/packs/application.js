@@ -32,8 +32,6 @@ import "bootstrap";
 import { navbar } from '../channels/navbar.js';
 import { chart } from '../channels/stats.js';
 
-const Chart = require('chart.js');
-
 document.addEventListener('turbolinks:load', () => {
   // Button which simultaneously click on two buttons
   // clickBtn();

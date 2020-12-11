@@ -1,3 +1,5 @@
+const Chart = require('chart.js');
+
 function chart(id) {
   
   const ctx = document.getElementById(id);
