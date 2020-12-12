@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="row d-flex"> 
-    <p class="mr-auto"><%= @bill.description %></p>
+    <p class="mr-auto"><%= @bill.date.strftime("%d/%m/%Y") %> - <%= @bill.description %></p>
     <div>
       <%= link_to 'Modifier la description', edit_company_customer_bill_path(@company, @customer, @bill), class: 'btn btn-warning' %>
     </div>

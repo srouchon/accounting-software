@@ -39,6 +39,7 @@ class BillsController < ApplicationController
     @bill.update(
       description: bill_params[:description], 
       ref_bill: bill_params[:ref_bill],
+      date: bill_params[:date],
       deposit: (bill_params[:deposit] != 0 ? bill_params[:deposit] : 0)
       # ne pas mettre à jour les autres éléments car valeur par défaut 0
     )
@@ -71,6 +72,6 @@ class BillsController < ApplicationController
   end
   
   def bill_params
-    params.require(:bill).permit(:description, :ref_bill, :deposit, :price_duty_free, :price_all_taxes)
+    params.require(:bill).permit(:description, :ref_bill, :date, :deposit, :price_duty_free, :price_all_taxes)
   end
 end

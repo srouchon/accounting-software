@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="row d-flex">
-    <p class="mr-auto"><%= @quote.description %></p>
+    <p class="mr-auto"><%= @quote.date.strftime("%d/%m/%Y") %> - <%= @quote.description %></p>
     <div>
       <%= link_to 'Modifier la description', edit_company_customer_quote_path(@company, @customer, @quote), class: 'btn btn-warning' %>
     </div>

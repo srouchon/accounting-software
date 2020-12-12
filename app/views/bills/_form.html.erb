@@ -6,6 +6,7 @@
     <%= simple_form_for([@company, @customer, @bill]) do |f| %>
       <%= f.input :ref_bill, label: 'Référence Facture:' %>
       <p>(Aide: dernière référence utilisée '<%= @company.bills.last ? @company.bills.last.ref_bill : 'aucune précédente facture' %>')</p>
+      <%= f.input :date, as: :date, label: 'Date:' %>
       <%= f.input :description, as: :text, label: 'Description:' %>
       <%= f.hidden_field :deposit, value: (@bill.deposit ? @bill.deposit : 0) %>
       <%= f.hidden_field :price_duty_free, value: 0 %>
