@@ -62,6 +62,7 @@
                 <%= form_for([@company, @customer, quote]) do |f| %>
                   <%= f.select(:quote_status, Quote.quote_statuses.keys.map {|status| status}) %>
                   <%= f.hidden_field :ref_quote, value: quote.ref_quote %>
+                  <%= f.hidden_field :description, value: quote.description %>
                   <%= f.hidden_field :date, value: quote.date %>
                   <%= submit_tag 'OK', class: 'text-primary'%>
                 <% end %>
@@ -120,6 +121,7 @@
                 <%= form_for([@company, @customer, bill]) do |f| %>
                   <%= f.select(:bill_status, Bill.bill_statuses.keys.map {|status| status}) %>
                   <%= f.hidden_field :ref_bill, value: bill.ref_bill %>
+                  <%= f.hidden_field :description, value: bill.description %>
                   <%= f.hidden_field :date, value: bill.date %>
                   <%= submit_tag 'OK', class: 'text-primary'%>
                 <% end %>

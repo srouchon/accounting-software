@@ -42,6 +42,7 @@
                 <%= form_for([@company, bill.customer, bill]) do |f| %>
                   <%= f.select(:bill_status, Bill.bill_statuses.keys.map {|status| status}) %>
                   <%= f.hidden_field :ref_bill, value: bill.ref_bill %>
+                  <%= f.hidden_field :description, value: bill.description %>
                   <%= f.hidden_field :date, value: bill.date %>
                   <%= submit_tag 'OK', class: 'text-primary'%>
                 <% end %>
