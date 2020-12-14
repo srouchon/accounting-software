@@ -51,13 +51,13 @@ class QuotesController < ApplicationController
   end
 
   def update
+    date = "#{quote_params["date(1i)"]}-#{quote_params["date(2i)"]}-#{quote_params["date(3i)"]}"
     @quote.update(
-      description: quote_params[:description], 
-      ref_quote: quote_params[:ref_quote],
-      date: quote_params[:date],
-      quote_status: Quote.quote_statuses[params[:quote]["quote_status"].downcase],
+      description: (@quote.description != quote_params[:description] ? quote_params[:description] : @quote.description), 
+      ref_quote: (@quote.ref_quote != quote_params[:ref_quote] ? quote_params[:ref_quote] : @quote.ref_quote),
+      date: (@quote.date != quote_params[:date] || date ? quote_params[:date] || date : @quote.date),
+      quote_status: (@quote.quote_status != params[:quote][:quote_status].downcase ? Quote.quote_statuses[params[:quote][:quote_status].downcase] : @quote.quote_status),
       deposit: (quote_params[:deposit] != 0 ? quote_params[:deposit] : 0)
-      # ne pas mettre à jour les autres éléments car valeur par défaut 0
     )
     authorize @quote
     if @quote.save!

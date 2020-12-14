@@ -36,13 +36,13 @@ class BillsController < ApplicationController
   end
   
   def update
+    date = "#{bill_params["date(1i)"]}-#{bill_params["date(2i)"]}-#{bill_params["date(3i)"]}"
     @bill.update(
-      description: bill_params[:description], 
-      ref_bill: bill_params[:ref_bill],
-      date: bill_params[:date],
-      bill_status: Bill.bill_statuses[params[:bill]["bill_status"].downcase],
+      description: (@bill.description != bill_params[:description] ? bill_params[:description] : @bill.description), 
+      ref_bill: (@bill.ref_bill != bill_params[:ref_bill] ? bill_params[:ref_bill] : @bill.ref_bill),
+      date: (@bill.date != bill_params[:date] || date ? bill_params[:date] || date : @bill.date),
+      bill_status: (@bill.bill_status != params[:bill][:bill_status].downcase ? Bill.bill_statuses[params[:bill][:bill_status].downcase] : @bill.bill_status),
       deposit: (bill_params[:deposit] != 0 ? bill_params[:deposit] : 0)
-      # ne pas mettre à jour les autres éléments car valeur par défaut 0
     )
     authorize @bill
     if @bill.save!
