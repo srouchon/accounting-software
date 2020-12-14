@@ -55,6 +55,7 @@ class QuotesController < ApplicationController
       description: quote_params[:description], 
       ref_quote: quote_params[:ref_quote],
       date: quote_params[:date],
+      quote_status: Quote.quote_statuses[params[:quote]["quote_status"].downcase],
       deposit: (quote_params[:deposit] != 0 ? quote_params[:deposit] : 0)
       # ne pas mettre à jour les autres éléments car valeur par défaut 0
     )
@@ -87,6 +88,6 @@ class QuotesController < ApplicationController
   end
 
   def quote_params
-    params.require(:quote).permit(:description, :ref_quote, :date, :deposit, :price_duty_free, :price_all_taxes)
+    params.require(:quote).permit(:description, :ref_quote, :date, :quote_status, :deposit, :price_duty_free, :price_all_taxes)
   end
 end

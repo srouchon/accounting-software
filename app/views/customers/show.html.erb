@@ -42,6 +42,8 @@
             <th>Acompte</th>
             <th>Prix HT</th>
             <th>Prix TTC</th>
+            <th>Etat</th>
+            <th>Changer l'état?</th>
           </tr>
         </thead>
         <tbody>
@@ -55,8 +57,17 @@
               <td><%= quote.deposit %></td>
               <td><%= quote.price_duty_free %></td>
               <td><%= quote.price_all_taxes %></td>
+              <td><%= quote.quote_status %></td>
               <td>
-                <%= link_to 'Voir', company_customer_quote_path(@company, @customer, quote), class: 'btn btn-secondary' %>
+                <%= form_for([@company, @customer, quote]) do |f| %>
+                  <%= f.select(:quote_status, Quote.quote_statuses.keys.map {|status| status}) %>
+                  <%= f.hidden_field :ref_quote, value: quote.ref_quote %>
+                  <%= f.hidden_field :date, value: quote.date %>
+                  <%= submit_tag 'OK', class: 'text-primary'%>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to 'Voir détails', company_customer_quote_path(@company, @customer, quote), class: 'btn btn-secondary' %>
               </td>
             </tr>
             <% end %>
@@ -89,6 +100,8 @@
             <th>Acompte</th>
             <th>Prix HT</th>
             <th>Prix TTC</th>
+            <th>Etat</th>
+            <th>Changer l'état?</th>
           </tr>
         </thead>
         <tbody>
@@ -102,8 +115,17 @@
               <td><%= bill.deposit %></td>
               <td><%= bill.price_duty_free %></td>
               <td><%= bill.price_all_taxes %></td>
+              <td><%= bill.bill_status %></td>
               <td>
-                <%= link_to 'Voir', company_customer_bill_path(@company, @customer, bill), class: 'btn btn-secondary' %>
+                <%= form_for([@company, @customer, bill]) do |f| %>
+                  <%= f.select(:bill_status, Bill.bill_statuses.keys.map {|status| status}) %>
+                  <%= f.hidden_field :ref_bill, value: bill.ref_bill %>
+                  <%= f.hidden_field :date, value: bill.date %>
+                  <%= submit_tag 'OK', class: 'text-primary'%>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to 'Voir détails', company_customer_bill_path(@company, @customer, bill), class: 'btn btn-secondary' %>
               </td>
             </tr>
             <% end %>
