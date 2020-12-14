@@ -1,10 +1,10 @@
 class BillsController < ApplicationController
-  before_action :set_customer, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :set_company, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :set_customer, only: [:show, :new, :create, :edit, :update, :destroy]
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bills = policy_scope(Bill).where(customer_id: @customer)
+    @bills = policy_scope(Bill)
   end
   
   def show

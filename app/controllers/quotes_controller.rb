@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
-  before_action :set_customer, only: [:pdf, :index, :show, :new, :create, :edit, :update, :destroy]
   before_action :set_company, only: [:pdf, :index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :set_customer, only: [:pdf, :show, :new, :create, :edit, :update, :destroy]
   before_action :set_quote, only: [:pdf, :show, :edit, :update, :destroy]
 
   def pdf
@@ -20,7 +20,7 @@ class QuotesController < ApplicationController
   end
   
   def index
-    @quotes = policy_scope(Quote).where(customer_id: @customer)
+    @quotes = policy_scope(Quote)
   end
 
   def show

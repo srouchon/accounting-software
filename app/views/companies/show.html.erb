@@ -23,8 +23,13 @@
     </div>
   </div>
 </div> -->
-<div class="row d-flex">
-  <h3>Mes Devis</h3>
+<div class="row justify-content-between">
+  <div>
+    <h3>Mes Devis (10 derniers)</h3>
+  </div>
+  <div>
+    <%= link_to 'Voir tous les devis', company_quotes_path(@company), class: 'text-primary' %>
+  </div>
 </div>
 <% if @company.quotes.blank? %>
   <div class="row d-flex">
@@ -46,7 +51,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @company.quotes.each do |quote| %>
+        <% @company.quotes.last(10).each do |quote| %>
           <tr>
             <td>
               <%= link_to company_customer_quote_path(@company, quote.customer.id, quote.id) do %>
@@ -78,10 +83,16 @@
         <% end %>
       </tbody>
     </table>
-  </div><br>
+  </div><br><br>
 <% end %>
-<div class="row d-flex">
-  <h3>Mes Factures</h3>
+
+<div class="row justify-content-between">
+  <div>
+    <h3>Mes Factures (10 dernières)</h3>
+  </div>
+  <div>
+    <%= link_to 'Voir toutes les factures', company_bills_path(@company), class: 'text-primary' %>
+  </div>
 </div>
 <% if @company.bills.blank? %>
   <div class="row d-flex">
@@ -103,7 +114,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @company.bills.each do |bill| %>
+        <% @company.bills.last(10).each do |bill| %>
           <tr>
             <td>
               <%= link_to company_customer_bill_path(@company, bill.customer.id, bill.id) do %>
