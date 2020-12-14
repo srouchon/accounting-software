@@ -5,5 +5,6 @@ class Quote < ApplicationRecord
   enum quote_status: { brouillon: 0, envoyé: 1, accepté: 2, échoué: 3 }
   
   validates :ref_quote, presence: true
+  validates :description, presence: true
   validates :date, presence: true
 end

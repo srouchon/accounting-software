@@ -9,6 +9,7 @@
       <%= f.input :date, as: :date, label: 'Date:' %>
       <%= f.input :description, as: :text, label: 'Description:' %>
       <%= f.hidden_field :deposit, value: (@bill.deposit ? @bill.deposit : 0) %>
+      <%= f.hidden_field :bill_status, value: @bill.bill_status %>
       <%= f.hidden_field :price_duty_free, value: 0 %>
       <%= f.hidden_field :price_all_taxes, value: 0 %>
       <%= link_to 'Annuler', @bill.id.nil? ? company_customer_path(@company, @customer) : company_customer_bill_path(@company, @customer, @bill), class: 'btn btn-primary' %>

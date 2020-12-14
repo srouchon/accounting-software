@@ -5,5 +5,6 @@ class Bill < ApplicationRecord
   enum bill_status: { brouillon: 0, envoyée: 1, payée: 2 }
   
   validates :ref_bill, presence: true
+  validates :description, presence: true
   validates :date, presence: true
 end

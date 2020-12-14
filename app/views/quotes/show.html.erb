@@ -111,6 +111,8 @@
               <div class="d-flex">
                 <div><%= f.hidden_field(:ref_quote, value: @quote.ref_quote) %></div>
                 <div><%= f.hidden_field(:description, value: @quote.description) %></div>
+                <div><%= f.hidden_field(:quote_status, value: @quote.quote_status) %></div>
+                <div><%= f.hidden_field(:date, value: @quote.date) %></div>
                 <div class='mr-auto'><%= f.label(:deposit, "Montant (en euros): ") %></div>
                 <div><%= f.text_field(:deposit, required: true) %></div>
               </div><br>
