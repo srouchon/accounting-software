@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User modifies company' do
+feature 'User modifies company from company index page' do
   scenario 'successfully' do
     sign_in
     create_company
