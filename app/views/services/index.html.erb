@@ -21,7 +21,7 @@
       <tbody>
         <% @services.each do |service| %>
         <tr>
-          <td><%= service.ref_service %></td>
+          <td id='ref-service'><%= service.ref_service %></td>
           <td><%= service.description_service %></td>
           <td class='text-right'><%= service.unit_price %> €</td>
           <td>

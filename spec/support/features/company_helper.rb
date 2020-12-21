@@ -1,5 +1,9 @@
 module Features
-  def create_company(name, address, postcode, city, phone, email, siret, tva)
+  def create_company
+    create_company_as('Entreprise1', 'Cours Portal', 33000, 'Bordeaux', '0505050505', 'entreprise1@test.com', '11111111111', 20)
+  end
+  
+  def create_company_as(name, address, postcode, city, phone, email, siret, tva)
     click_on('Créer une nouvelle entreprise')
     fill_in("Dénomination sociale",	with: name)
     fill_in("Adresse",	with: address)

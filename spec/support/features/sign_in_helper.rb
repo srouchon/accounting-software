@@ -1,6 +1,10 @@
 module Features
   def sign_in
-    user = User.create!(email: 'example3@test.com', password: 'testpassword', firstname: 'TestFirstname', lastname: 'TestLastname')
+    sign_in_as('example3@test.com', 'testpassword', 'TestFirstname', 'TestLastname')
+  end
+  
+  def sign_in_as(email, password, firstname, lastname)
+    user = User.create!(email: email, password: password, firstname: firstname, lastname: lastname)
     visit root_path
     fill_in "Email",	with: user.email
     fill_in "Mot de passe",	with: user.password 
