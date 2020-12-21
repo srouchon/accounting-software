@@ -22,7 +22,7 @@ class CustomersController < ApplicationController
     @customer.company = @company
     authorize @customer
     if @customer.save
-      redirect_to company_customer_path(@company, @customer)
+      redirect_to company_customers_path(@company)
     else
       render :new
     end

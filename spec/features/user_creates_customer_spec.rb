@@ -4,8 +4,8 @@ feature 'User creates service' do
   scenario 'successfully' do
     sign_in
     create_company
-    click_on("Prestations")
-    create_service
-    expect(page).to have_css('#ref-service', text: 'PREST1')
+    click_on("Clients")
+    create_customer
+    expect(page).to have_css('#ref-customer', text: 'CLT1')
   end
 end

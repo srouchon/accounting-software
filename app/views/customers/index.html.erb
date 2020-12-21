@@ -26,7 +26,7 @@
                     <%= link_to edit_company_customer_path(@company, customer), class: 'text-warning' do %><i class="far fa-edit"></i><% end %>
                   </div>
                 </div>
-                <h6 class="card-title">Réf: <span><%= customer.ref_client %></span></h6>
+                <h6 class="card-title">Réf: <span id='ref-customer'><%= customer.ref_client %></span></h6>
                 <h6 class="card-title">Adresse: <span><%= customer.address %> <%= customer.postcode %> <%= customer.city %></span></h6>
                 <h6 class="card-title">Téléphone(s): <span><%= customer.phone_1 %> <%= customer.phone_2 %></span></h6>
                 <h6 class="card-title">Email(s): <span><%= customer.email_1 %> <%= customer.email_2 %></span></h6>

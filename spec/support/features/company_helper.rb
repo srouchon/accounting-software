@@ -12,7 +12,7 @@ module Features
     fill_in("Téléphone",	with: phone)
     fill_in("Email",	with: email)
     fill_in("SIRET",	with: siret)
-    fill_in("Taux de TVA (si vous n'êtes pas assujetti à la TVA, saisir le montant '0')",	with: tva)
+    fill_in("TVA",	with: tva)
     click_on('Créer cette entreprise')
   end
 end
