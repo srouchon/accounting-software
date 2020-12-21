@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User creates service' do
+feature 'User creates customer' do
   scenario 'successfully' do
     sign_in
     create_company
